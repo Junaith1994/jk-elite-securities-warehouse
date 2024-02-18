@@ -1,0 +1,7 @@
+.login-btn {
+    background-image: linear-gradient(to right, #2b5876 0%, #4e4376 51%, #2b5876 100%);
+}
+
+.login-btn:hover {
+    background-image: linear-gradient(to right, #29648b 0%, #4f3e8a 51%, #143449 100%);
+}
