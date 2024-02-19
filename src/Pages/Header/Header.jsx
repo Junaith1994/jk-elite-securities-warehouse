@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import './Header.css';
 
 const navigation = [
-    { name: 'Product', to: '/product' },
+    { name: 'Products', to: '/manage-products' },
     { name: 'Features', to: '/' },
     { name: 'Marketplace', to: '/' },
     { name: 'Company', to: '/' },
