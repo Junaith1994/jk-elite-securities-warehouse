@@ -8,7 +8,9 @@
         "description": "The HD CCTV surveillance camera delivers high-definition video footage, ensuring clear and detailed monitoring of indoor and outdoor areas. Ideal for residential and commercial security applications, it offers advanced features for enhanced surveillance capabilities.",
         "supplier": "Jk Elite Securities Solutions Inc.",
         "price": "$149.99",
-        "quantity": 50
+        "quantity": 50,
+        "createdBy": "daya2018ctg@gmail.com",
+        "date": "13-02-24"
     },
     {
         "_id": 2,
@@ -19,7 +21,9 @@
         "description": "The smart door lock combines convenience and security with fingerprint and passcode authentication. Offering keyless entry, it provides advanced features such as tamper alerts and remote access control for enhanced home security and peace of mind.",
         "supplier": "Jk Elite Securities Solutions Inc.",
         "price": "$199.99",
-        "quantity": 30
+        "quantity": 30,
+        "createdBy": "daya2018ctg@gmail.com",
+        "date": "13-02-24"
     },
     {
         "_id": 3,
@@ -30,7 +34,9 @@
         "description": "The advanced face-recognition surveillance camera utilizes cutting-edge technology to accurately identify individuals in real-time, providing enhanced security monitoring in commercial, residential, and public settings with advanced features for comprehensive surveillance solutions.",
         "supplier": "Jk Elite Securities Solutions Inc.",
         "price": "$350",
-        "quantity": 200
+        "quantity": 200,
+        "createdBy": "daya2018ctg@gmail.com",
+        "date": "13-02-24"
     },
     {
         "_id": 4,
@@ -41,7 +47,9 @@
         "description": "The motion camera detects movement in its field of view, triggering recording or alerts for active surveillance. Suitable for indoor and outdoor use, it offers flexibility and reliability for comprehensive security monitoring solutions.",
         "supplier": "Ajax",
         "price": "$400",
-        "quantity": 100
+        "quantity": 100,
+        "createdBy": "daya2018ctg@gmail.com",
+        "date": "13-02-24"
     },
     {
         "_id": 5,
@@ -52,7 +60,9 @@
         "description": "The attendance terminal with fingerprint and facial recognition offers efficient employee tracking and access control. With advanced biometric features, it ensures accurate attendance management, enhancing security and productivity in various organizational settings.",
         "supplier": "Zk Teco",
         "price": "$130",
-        "quantity": 120
+        "quantity": 120,
+        "createdBy": "daya2018ctg@gmail.com",
+        "date": "13-02-24"
     },
     {
         "_id": 6,
@@ -63,7 +73,9 @@
         "description": "The Centurion anti-theft bracket provides a robust lock system for gates, ensuring reliable security against unauthorized access. Built with durable materials and advanced locking mechanisms, it offers peace of mind for property owners.",
         "supplier": "Centurion",
         "price": "$59.99",
-        "quantity": 80
+        "quantity": 80,
+        "createdBy": "daya2018ctg@gmail.com",
+        "date": "13-02-24"
     },
     {
         "_id": 7,
@@ -74,7 +86,9 @@
         "description": "The HD surveillance drone offers aerial monitoring capabilities with high-definition video recording, enabling comprehensive security surveillance in diverse environments such as large properties, industrial sites, and event venues for effective monitoring and response.",
         "supplier": "Jk Elite Securities Solutions Inc.",
         "price": "$400",
-        "quantity": 150
+        "quantity": 150,
+        "createdBy": "daya2018ctg@gmail.com",
+        "date": "13-02-24"
     },
     {
         "_id": 8,
@@ -85,7 +99,9 @@
         "description": "The door protector offers versatile installation options with two magnets of different sizes and a reed switch capable of 2,000,000 openings. It ensures security with protected reed switch chattering and up to 7 years of battery life.",
         "supplier": "Ajax",
         "price": "$249.99",
-        "quantity": 50
+        "quantity": 50,
+        "createdBy": "daya2018ctg@gmail.com",
+        "date": "13-02-24"
     },
     {
         "_id": 9,
@@ -96,7 +112,9 @@
         "description": "The control-panel hub is a versatile security system component, featuring support for alarm photo verification and three independent communication channels, including Ethernet and dual 4G SIM cards, ensuring reliable monitoring and quick channel switching.",
         "supplier": "Ajax",
         "price": "$199.99",
-        "quantity": 30
+        "quantity": 30,
+        "createdBy": "daya2018ctg@gmail.com",
+        "date": "13-02-24"
     },
     {
         "_id": 10,
@@ -107,6 +125,8 @@
         "description": "The wireless smart panic button offers versatile functionality with three operating modes: Panic, Control of relays and sockets, and Mute fire alarms, all configurable remotely by the installer or user with admin rights using mobile or desktop apps.",
         "supplier": "Ajax",
         "price": "$29.99",
-        "quantity": 15
+        "quantity": 15,
+        "createdBy": "daya2018ctg@gmail.com",
+        "date": "13-02-24"
     }
 ]

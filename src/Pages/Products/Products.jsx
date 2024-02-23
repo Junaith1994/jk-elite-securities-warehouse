@@ -1,9 +1,11 @@
 import Product from "../Product/Product";
 import useProducts from "../../hooks/useProducts";
+import { useNavigate } from "react-router-dom";
 
 const Products = () => {
     // Getting products data from custom hook
     const [products] = useProducts();
+    const navigate = useNavigate();
 
     return (
         <div className="container mx-auto">
@@ -15,6 +17,9 @@ const Products = () => {
                         product={product}
                     ></Product>)
                 }
+            </div>
+            <div onClick={() => navigate("/manage-products")} className="text-center my-5">
+                <button className="bg-cyan-800 font-semibold text-slate-50 hover:bg-cyan-950 px-6 py-3 rounded-md">Manage Products</button>
             </div>
         </div>
     );

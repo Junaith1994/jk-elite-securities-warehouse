@@ -6,6 +6,8 @@ import ProductDetails from './Pages/ProductDetails/ProductDetails'
 import Login from './Pages/Login/Login'
 import SignUp from './Pages/SignUp/SignUp'
 import ManageProducts from './Pages/ManageProducts/ManageProducts'
+import AddNewProduct from './Pages/ManageProducts/AddNewProduct/AddNewProduct'
+import NotFound from './Pages/NotFoundPage/NotFound'
 
 function App() {
 
@@ -20,6 +22,8 @@ function App() {
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/sign-up' element={<SignUp></SignUp>}></Route>
         <Route path='/manage-products' element={<ManageProducts></ManageProducts>}></Route>
+        <Route path='/add-new-product' element={<AddNewProduct></AddNewProduct>}></Route>
+        <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
     </div>
   )
