@@ -8,13 +8,15 @@ import SignUp from './Pages/SignUp/SignUp'
 import ManageProducts from './Pages/ManageProducts/ManageProducts'
 import AddNewProduct from './Pages/ManageProducts/AddNewProduct/AddNewProduct'
 import NotFound from './Pages/NotFoundPage/NotFound'
+import 'react-toastify/dist/ReactToastify.css'
+import { ToastContainer } from 'react-toastify'
 
 function App() {
 
   return (
     <div>
       <Header></Header>
-      
+
       {/* <Home></Home> */}
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
@@ -25,6 +27,7 @@ function App() {
         <Route path='/add-new-product' element={<AddNewProduct></AddNewProduct>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
+      <ToastContainer />
     </div>
   )
 }

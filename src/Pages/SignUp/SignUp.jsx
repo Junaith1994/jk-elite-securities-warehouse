@@ -1,20 +1,33 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useRef } from "react";
 import { NavLink } from "react-router-dom";
+import useSignUp from "../../hooks/useFirebaseAuth/useSignUp";
 
 const SignUp = () => {
-    // Input Field Value
+    // Input value ref
     const emailRef = useRef('');
     const passwordRef = useRef('');
     const confirmPassRef = useRef('');
 
+    // firebase custom hook for user Sign-up
+    const [SignUpWithEmailAndPass, user, wrongPass, error] = useSignUp();
+    console.log(user);
+    // Handle form submit
     const handleFormSubmit = event => {
         // Preventing Default Submit
         event.preventDefault();
+        // Input Field Value
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
         const confirmPass = confirmPassRef.current.value;
-        console.log('Email:', email, 'Password:', password, 'Confirm-Password:', confirmPass);
+        // console.log('Email:', email, 'Password:', password, 'Confirm-Password:', confirmPass);
+
+        // Sign-Up With Email and Password
+        SignUpWithEmailAndPass(email, password, confirmPass);
+        
+        // .then(user => {
+        //     console.log(user);
+        // })
 
         event.target.reset();
     }
@@ -88,7 +101,7 @@ const SignUp = () => {
                             />
                         </div>
                     </div>
-
+                    <p className="text-red-700 font-semibold">{wrongPass || error}</p>
                     <div className='login-btn rounded-md'>
                         <button
                             type="submit"

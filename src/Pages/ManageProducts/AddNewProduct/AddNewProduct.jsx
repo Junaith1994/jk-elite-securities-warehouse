@@ -26,7 +26,7 @@ const AddNewProduct = () => {
         const price = priceRef.current.value;
         const quantity = quantityRef.current.value;
         const createdBy = createdByRef.current.value;
-        const date = dateRef.current.value;
+        const date = new Date() || dateRef.current.value; 
         console.log({
             "productName": productName,
             "imgLink": imgLink,
@@ -110,7 +110,7 @@ const AddNewProduct = () => {
                             Short Description
                         </label>
                         <div className="mt-2">
-                            <input
+                            <textarea
                                 id="short-description"
                                 name="shortDescription"
                                 ref={shortDescriptionRef}
@@ -126,7 +126,7 @@ const AddNewProduct = () => {
                             Description
                         </label>
                         <div className="mt-2">
-                            <input
+                            <textarea
                                 id="description"
                                 name="description"
                                 ref={descriptionRef}
@@ -213,7 +213,6 @@ const AddNewProduct = () => {
                                 ref={dateRef}
                                 type="date"
                                 autoComplete="date"
-                                defaultValue={new Date()}
                                 className="block w-full px-2 rounded-md border-0 py-1.5 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-950 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm lg:text-xl sm:leading-6"
                             />
                         </div>
