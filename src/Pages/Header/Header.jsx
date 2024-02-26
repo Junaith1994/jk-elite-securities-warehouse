@@ -1,8 +1,12 @@
+/* eslint-disable no-unused-vars */
 import { useState } from 'react'
 import { Dialog } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { NavLink } from 'react-router-dom';
 import './Header.css';
+import useAuthState from '../../hooks/useFirebaseAuth/useAuthState';
+import { signOut } from 'firebase/auth';
+import { auth } from '../../firebase.init';
 
 const navigation = [
     { name: 'Products', to: '/manage-products' },
@@ -13,6 +17,11 @@ const navigation = [
 
 const Header = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    // Firebase AuthState custom hook to get the currently signed in user
+    const [user, loading] = useAuthState();
+    console.log(user, loading);
+
+    // Handle SignOut
 
     return (
         <header className="bg-black">
@@ -45,11 +54,19 @@ const Header = () => {
                         </NavLink>
                     ))}
                 </div>
-                <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                    <NavLink to="/login" className="text-sm font-semibold leading-6 text-slate-50">
-                        <button className='btn-grad'>Login</button>
-                    </NavLink>
-                </div>
+                {
+                    user || loading ? <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+                        <NavLink onClick={() => signOut(auth)} className="text-sm font-semibold leading-6 text-slate-50">
+                            <button className='bg-red-700 hover:bg-red-900 rounded-md px-4 py-2'>Log-out</button>
+                        </NavLink>
+                    </div>
+                        :
+                        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+                            <NavLink to="/login" className="text-sm font-semibold leading-6 text-slate-50">
+                                <button className='btn-grad'>Login</button>
+                            </NavLink>
+                        </div>
+                }
             </nav>
             <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
                 <div className="fixed inset-0 z-50" />

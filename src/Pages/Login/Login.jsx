@@ -1,19 +1,26 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/no-unescaped-entities */
 import { NavLink } from 'react-router-dom';
 import './Login.css'
 import { useRef } from 'react';
+import useSignIn from '../../hooks/useFirebaseAuth/useSignIn';
 
 const Login = () => {
     // Input Field Value
     const emailRef = useRef('');
     const passwordRef = useRef('');
 
+    // Firebase Sign-in custom hook 
+    const [SignInWithEmailAndPassword, user, error] = useSignIn();
+    console.log(user);
     const handleFormSubmit = event => {
         // Preventing Default Submit
         event.preventDefault();
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
-        console.log('Email:', email, 'Password:', password);
+        // console.log('Email:', email, 'Password:', password);
+        // Sign-in with email-password
+        SignInWithEmailAndPassword(email, password);
 
         event.target.reset();
     }
@@ -73,7 +80,7 @@ const Login = () => {
                             />
                         </div>
                     </div>
-
+                    <p className='text-red-800 font-semibold'>{error}</p>
                     <div className='login-btn rounded-md'>
                         <button
                             type="submit"
@@ -103,7 +110,7 @@ const Login = () => {
                     >
                         Continue With Google
                     </button>
-                </div>    
+                </div>
             </div>
         </div>
     )
