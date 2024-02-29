@@ -4,15 +4,19 @@ import { NavLink } from 'react-router-dom';
 import './Login.css'
 import { useRef } from 'react';
 import useSignIn from '../../hooks/useFirebaseAuth/useSignIn';
+import useGoogleSignIn from '../../hooks/useFirebaseAuth/useGoogleSignIn';
 
 const Login = () => {
     // Input Field Value
     const emailRef = useRef('');
     const passwordRef = useRef('');
 
-    // Firebase Sign-in custom hook 
+    // Firebase Email-Password Sign-in custom hook 
     const [SignInWithEmailAndPassword, user, error] = useSignIn();
-    console.log(user);
+    // Firebase Google Sign-in with custom hook
+    const [googleSignIn, googleUser] = useGoogleSignIn();
+    // console.log(user);
+    console.log(googleUser);
     const handleFormSubmit = event => {
         // Preventing Default Submit
         event.preventDefault();
@@ -102,7 +106,7 @@ const Login = () => {
                     <div className='text-slate-100 mx-2 font-semibold'>Or</div>
                     <div className='w-full h-0.5 rounded-md bg-slate-100'></div>
                 </div>
-                <div className='bg-gray-100 rounded-lg shadow-md hover:shadow-gray-400 flex justify-between items-center'>
+                <div onClick={() => googleSignIn()} className='bg-gray-100 rounded-lg shadow-md hover:shadow-gray-400 flex justify-between items-center'>
                     <img className='w-10' src="https://i.ibb.co/0DcJQL5/google-logo.png" alt="" />
                     <button
                         type="submit"

@@ -5,23 +5,24 @@ import { useEffect, useState } from "react";
 
 const useAuthState = () => {
     // Necessary States
-    const [loading, setLoading] = useState(true);
     const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         // setLoading(true);
         onAuthStateChanged(auth, (user) => {
             if (user) {
-                setUser(user);
                 setLoading(false);
+                setUser(user);
             }
             else {
+                setLoading(false)
                 setUser(null);
             }
         })
     }, [])
 
-    return [user, loading];
+    return [user, loading, setLoading];
 }
 
 export default useAuthState;
