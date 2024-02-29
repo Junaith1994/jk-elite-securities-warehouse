@@ -6,7 +6,7 @@ const useGoogleSignIn = () => {
     // Necessary States
     const [googleUser, setGoogleUser] = useState({});
     const [googleError, setGoogleError] = useState('');
-    console.log(googleError);
+    // console.log(googleError);
     const googleSignIn = () => {
         // Google Auth Provider
         const provider = new GoogleAuthProvider();

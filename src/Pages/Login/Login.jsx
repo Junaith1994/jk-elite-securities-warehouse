@@ -2,9 +2,10 @@
 /* eslint-disable react/no-unescaped-entities */
 import { NavLink } from 'react-router-dom';
 import './Login.css'
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import useSignIn from '../../hooks/useFirebaseAuth/useSignIn';
 import useGoogleSignIn from '../../hooks/useFirebaseAuth/useGoogleSignIn';
+import usePasswordResetEmail from '../../hooks/useFirebaseAuth/usePasswordResetEmail';
 
 const Login = () => {
     // Input Field Value
@@ -15,8 +16,10 @@ const Login = () => {
     const [SignInWithEmailAndPassword, user, error] = useSignIn();
     // Firebase Google Sign-in with custom hook
     const [googleSignIn, googleUser] = useGoogleSignIn();
+    // Password reset firebase custom hook
+    const [passwordResetEmail] = usePasswordResetEmail();
     // console.log(user);
-    console.log(googleUser);
+    // console.log(googleUser);
     const handleFormSubmit = event => {
         // Preventing Default Submit
         event.preventDefault();
@@ -27,6 +30,13 @@ const Login = () => {
         SignInWithEmailAndPassword(email, password);
 
         event.target.reset();
+    }
+
+    // Handle Password reset
+    const PasswordReset = () => {
+        const confirmation = window.confirm("Are you sure to reset your password ?");
+        const email = emailRef.current.value;
+        confirmation && passwordResetEmail(email);
     }
 
     return (
@@ -66,10 +76,8 @@ const Login = () => {
                             <label htmlFor="password" className="block text-sm font-medium leading-6 text-slate-100">
                                 Password
                             </label>
-                            <div className="text-sm">
-                                <NavLink href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
-                                    Forgot password?
-                                </NavLink>
+                            <div onClick={PasswordReset} className="cursor-pointer text-sm font-semibold text-indigo-600 hover:text-indigo-500">
+                                <p>Forgot password?</p>
                             </div>
                         </div>
                         <div className="mt-2">
