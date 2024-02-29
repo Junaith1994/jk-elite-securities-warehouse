@@ -2,12 +2,15 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase.init";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import useSendEmailVerification from "./useSendEmailVerification";
 
 const useSignUp = () => {
     // Necessary States
     const [user, setUser] = useState({});
     const [error, setError] = useState('');
     const [wrongPass, setWrongPass] = useState('');
+    // Send email verification custom hook
+    const [emailVerification] = useSendEmailVerification();
 
     const SignUpWithEmailAndPass = (email, password, confirmPass) => {
         password === confirmPass ? createUserWithEmailAndPassword(auth, email, password)
@@ -16,7 +19,8 @@ const useSignUp = () => {
                 const user = userCredential.user;
                 setWrongPass('');
                 toast("Account Created Successfully")
-                return setUser(user);
+                setUser(user);
+                emailVerification();
             })
             .catch(error => {
                 const errorMessage = error.message;

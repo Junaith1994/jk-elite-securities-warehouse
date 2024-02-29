@@ -19,7 +19,7 @@ const Header = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     // Firebase AuthState custom hook to get the currently signed in user
     const [user, loading] = useAuthState();
-    // console.log(user, loading);
+    console.log(user);
 
     return (
         <header className="bg-black">
