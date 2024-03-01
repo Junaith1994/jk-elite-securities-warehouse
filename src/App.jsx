@@ -10,6 +10,7 @@ import AddNewProduct from './Pages/ManageProducts/AddNewProduct/AddNewProduct'
 import NotFound from './Pages/NotFoundPage/NotFound'
 import 'react-toastify/dist/ReactToastify.css'
 import { ToastContainer } from 'react-toastify'
+import RequireAuth from './RequireAuth/RequireAuth'
 
 function App() {
 
@@ -23,7 +24,11 @@ function App() {
         <Route path='/product/:id' element={<ProductDetails></ProductDetails>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/sign-up' element={<SignUp></SignUp>}></Route>
-        <Route path='/manage-products' element={<ManageProducts></ManageProducts>}></Route>
+        <Route path='/manage-products' element={
+          <RequireAuth>
+            <ManageProducts></ManageProducts>
+          </RequireAuth>
+        }></Route>
         <Route path='/add-new-product' element={<AddNewProduct></AddNewProduct>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
