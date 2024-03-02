@@ -2,21 +2,19 @@
 /* eslint-disable react/no-unescaped-entities */
 import { NavLink } from 'react-router-dom';
 import './Login.css'
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import useSignIn from '../../hooks/useFirebaseAuth/useSignIn';
 import useGoogleSignIn from '../../hooks/useFirebaseAuth/useGoogleSignIn';
 import usePasswordResetEmail from '../../hooks/useFirebaseAuth/usePasswordResetEmail';
 
 const Login = () => {
-    // Input Field Value
+    // Input Field Value and necessary hooks
     const emailRef = useRef('');
     const passwordRef = useRef('');
 
-    // Firebase Email-Password Sign-in custom hook 
+    // Firebase Email-Password sign-in, Google Sign-in, Password reset custom hook
     const [SignInWithEmailAndPassword, user, error] = useSignIn();
-    // Firebase Google Sign-in with custom hook
     const [googleSignIn, googleUser] = useGoogleSignIn();
-    // Password reset firebase custom hook
     const [passwordResetEmail] = usePasswordResetEmail();
     // console.log(user);
     // console.log(googleUser);
@@ -25,10 +23,10 @@ const Login = () => {
         event.preventDefault();
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
-        // console.log('Email:', email, 'Password:', password);
+
         // Sign-in with email-password
         SignInWithEmailAndPassword(email, password);
-
+        // clearing fields
         event.target.reset();
     }
 
@@ -92,7 +90,7 @@ const Login = () => {
                             />
                         </div>
                     </div>
-                    <p className='text-red-800 font-semibold'>{error}</p>
+                    <p className='text-red-600 font-semibold'>{error}</p>
                     <div className='login-btn rounded-md'>
                         <button
                             type="submit"

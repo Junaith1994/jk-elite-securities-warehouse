@@ -9,7 +9,7 @@ const ManageProducts = () => {
 
     return (
         <div className="min-w-full bg-slate-950 text-slate-100">
-            <h1 className="text-4xl font-semibold text-center mb-8">All Security Products Summary</h1>
+            <h1 className="text-4xl font-semibold text-center mb-8">Manage All Security Products</h1>
             <table className="w-full border-collapse border border-slate-500">
                 <thead className="row">
                     <tr className="">
@@ -18,7 +18,7 @@ const ManageProducts = () => {
                         <th className="border border-slate-600">Quantity</th>
                         <th className="border border-slate-600">Price</th>
                         <th className="border border-slate-600">Supplier</th>
-                        <th className="border border-slate-600">Delete Product</th>
+                        <th className="border border-slate-600">Delete</th>
                     </tr>
                 </thead>
                 <tbody className="">
@@ -30,8 +30,14 @@ const ManageProducts = () => {
                     }
                 </tbody>
             </table>
-            <div onClick={() => navigate("/add-new-product")} className="text-center my-5">
-                <button className="bg-cyan-800 font-semibold text-slate-50 hover:bg-cyan-950 px-6 py-3 rounded-md">Add New Product</button>
+            <div className="text-center my-5">
+                <button onClick={() => navigate("/add-new-product")} className="bg-cyan-800 font-semibold text-slate-50 hover:bg-cyan-950 px-6 py-3 rounded-md">Add New Product</button>
+            </div>
+            <div className="m-6">
+                <h4 className="text-xl font-semibold text-yellow-400">Basic Instructions :</h4>
+                <ul>
+                    <li>Quantity Column data background color <span className="text-red-800 font-bold">Red</span> indicating low stock.</li>
+                </ul>
             </div>
         </div >
     );

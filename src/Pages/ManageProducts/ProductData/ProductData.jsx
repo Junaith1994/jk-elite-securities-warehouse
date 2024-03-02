@@ -7,7 +7,7 @@ const ProductData = ({ productData }) => {
         <tr className="table-data-shad">
             <td className="border border-slate-700">{itemName}</td>
             <td className="border border-slate-700 shadow-md">{categories}</td>
-            <td className="border border-slate-700 shadow-md">{quantity}</td>
+            <td className={quantity < 100 ? 'bg-red-700 border border-slate-700' : 'border border-slate-700 shadow-md'}>{quantity}</td>
             <td className="border border-slate-700 shadow-md">{price}</td>
             <td className="border border-slate-700 shadow-md">{supplier}</td>
             <td className="border border-slate-700 shadow-md cursor-pointer">

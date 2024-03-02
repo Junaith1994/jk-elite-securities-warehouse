@@ -94,20 +94,31 @@ const Header = () => {
                                     <NavLink
                                         key={item.name}
                                         to={item.to}
-                                        className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-slate-100 hover:bg-gray-50"
+                                        className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-slate-100 hover:bg-gray-50 hover:text-gray-950"
                                     >
                                         {item.name}
                                     </NavLink>
                                 ))}
                             </div>
-                            <div className="py-6">
-                                <a
-                                    href="#"
-                                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-slate-100 hover:bg-gray-50"
-                                >
-                                    Log in
-                                </a>
-                            </div>
+                            {
+                                user || loading ? <div className="py-6">
+                                    <NavLink
+                                        onClick={() => signOut(auth)}
+                                        className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-slate-100 hover:bg-gray-50 hover:text-gray-950"
+                                    >
+                                        <button className='bg-red-700 hover:bg-red-900 rounded-md px-4 py-2'>Log-out</button>
+                                    </NavLink>
+                                </div>
+                                    :
+                                    <div className="py-6">
+                                        <NavLink
+                                            to="/login"
+                                            className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-slate-100 hover:bg-gray-50 hover:text-gray-950"
+                                        >
+                                            <button className='btn-grad'>Login</button>
+                                        </NavLink>
+                                    </div>
+                            }
                         </div>
                     </div>
                 </Dialog.Panel>
@@ -117,3 +128,6 @@ const Header = () => {
 };
 
 export default Header;
+
+
+// 
