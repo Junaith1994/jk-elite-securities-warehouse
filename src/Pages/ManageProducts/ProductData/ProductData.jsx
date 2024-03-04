@@ -1,10 +1,12 @@
+import { useNavigate } from 'react-router-dom';
 import './ProductData.css'
 
 const ProductData = ({ productData }) => {
-    const { itemName, categories, supplier, price, quantity } = productData;
+    const { _id, itemName, categories, supplier, price, quantity } = productData;
+    const navigate = useNavigate();
 
     return (
-        <tr className="table-data-shad">
+        <tr onClick={() => navigate(`/product/${_id}`)} className="cursor-pointer table-data-shad">
             <td className="border border-slate-700">{itemName}</td>
             <td className="border border-slate-700 shadow-md">{categories}</td>
             <td className={quantity < 100 ? 'bg-red-700 border border-slate-700' : 'border border-slate-700 shadow-md'}>{quantity}</td>

@@ -19,7 +19,7 @@ const usePasswordResetEmail = () => {
                 })
         }
         else {
-            toast("Please Provide Your Email !!")
+            toast.error("Please Provide Your Email !!")
         }
     }
 

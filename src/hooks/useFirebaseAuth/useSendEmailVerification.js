@@ -6,7 +6,7 @@ const useSendEmailVerification = () => {
     const emailVerification = () => {
         sendEmailVerification(auth.currentUser)
             .then(() => {
-                toast("Email Verification Sent, Please Check Your Email");
+                toast.success("Email Verification Sent, Please Check Your Email");
             });
     }
 

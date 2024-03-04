@@ -18,7 +18,7 @@ const useSignUp = () => {
                 // Signed-up user
                 const user = userCredential.user;
                 setWrongPass('');
-                toast("Account Created Successfully")
+                toast.success("Account Created Successfully")
                 setUser(user);
                 emailVerification();
             })
