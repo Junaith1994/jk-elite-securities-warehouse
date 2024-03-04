@@ -1,7 +1,4 @@
-// import { createContext } from "react";
 import { useNavigate } from "react-router-dom";
-
-// export const ProductDetailsContext = createContext({});
 
 const Product = ({ product }) => {
     const { _id, itemName, img, shortDescription, supplier, price, quantity } = product;

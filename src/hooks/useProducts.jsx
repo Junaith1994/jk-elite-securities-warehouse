@@ -7,7 +7,7 @@ const useProducts = () => {
     useEffect(() => {
         axios.get('http://localhost:5000/products')
             .then(res => {
-                console.log(res);
+                // console.log(res);
                 setProducts(res.data)
             })
             .catch(err => {

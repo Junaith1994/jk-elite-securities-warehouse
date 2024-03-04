@@ -1,23 +1,42 @@
-// import { useContext, useEffect } from "react";
-// import { ProductDetailsContext } from "../Product/Product";
-
-// import { useParams } from "react-router-dom";
-// import useProducts from "../../hooks/useProducts";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 const ProductDetails = () => {
-    // const product = useContext(ProductDetailsContext);
-    // console.log(product);
-    // const [products] = useProducts();
-    // const { id } = useParams();
-    // console.log(products);
-    // useEffect(() => {
-    //     const productDetails = products.find(pd => pd._id === id);
-    //     console.log(productDetails);
-    // }, [products, id])
+    const { id } = useParams();
+    const [product, setProduct] = useState({});
+    // const [error, setError] = useState('');
+
+    // Destructured info of the single product
+    const {
+        _id,
+        itemName,
+        img,
+        categories,
+        shortDescription,
+        description,
+        supplier,
+        price,
+        quantity,
+        createdBy,
+        date
+    } = product;
+
+    // Getting single product details by sending request to the server
+    useEffect(() => {
+        axios.get(`http://localhost:5000/product/${id}`)
+            .then(res => {
+                setProduct(res.data);
+            })
+            .catch(error => {
+                console.log(error);
+                // setError(error.message);
+            })
+    }, [id])
 
     return (
         <div>
-            <h1 className="text-4xl text-black">Product Details</h1>
+            <h1 className="text-4xl text-center text-black">Product Details</h1>
         </div>
     );
 };
