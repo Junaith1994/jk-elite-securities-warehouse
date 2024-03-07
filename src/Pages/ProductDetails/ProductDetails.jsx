@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import useSingleProductData from "../../hooks/useSingleProductData";
 import axios from "axios";
@@ -8,6 +8,7 @@ const ProductDetails = () => {
     const { id } = useParams();
     const restockInputRef = useRef(0);
     const [latestQtyValue, setLatestQtyValue] = useState(undefined);
+    const navigate = useNavigate();
 
     // Getting single product data from the server by sending specific product 'id' as parameter using custom hook 
     const [product] = useSingleProductData(id);
@@ -27,7 +28,7 @@ const ProductDetails = () => {
         date
     } = product;
 
-    // Setting immutable quantity value as mutable for mutation 
+    // Setting immutable quantity value as mutable for mutation (Because 'quantity' value can't be mutable directly. That's why copying the quantity value for mutation which will be updated later in the database as actual value ans also update in UI)
     useEffect(() => {
         setLatestQtyValue(quantity);
     }, [quantity])
@@ -54,7 +55,7 @@ const ProductDetails = () => {
     // Handle Restock button 
     const handleRestock = event => {
         event.preventDefault();
-        const restockValue = restockInputRef.current.value;
+        const restockValue = parseInt(restockInputRef.current.value) + parseInt(latestQtyValue);
         const confirmation = restockValue > 1000 && window.confirm(`Are you sure to add ${restockValue} products to the stock?`);
         // console.log(restockValue);
         if (restockValue && restockValue > 0) {
@@ -64,29 +65,29 @@ const ProductDetails = () => {
                     productId: id,
                     updatedValue: restockValue
                 })
-                    .then(res => { console.log(res); })
+                    .then(res => { console.log(res); location.reload(); })
                     .then(error => console.log(error)) :
                     restockValue <= 1000 && axios.post('http://localhost:5000/product/update-qty', {
                         productId: id,
                         updatedValue: restockValue
                     })
-                        .then(res => { console.log(res); })
+                        .then(res => { console.log(res); location.reload(); })
                         .then(error => console.log(error))
         }
         else {
             toast.error("Restock Value less than 1 is invalid. Enter between 1 - 3000 value.");
         }
-        location.reload();
+        
     }
 
     return (
         <div className="bg-gray-950 text-gray-200">
             <h1 className="text-4xl text-center text-gray-200">Manage Product</h1>
-            <div className="grid grid-cols-2 my-10">
-                <div className="w-3/4 shadow-lg shadow-slate-500">
+            <div className="grid grid-cols-1 md:grid-cols-2 my-10">
+                <div className="w-full md:w-3/4 shadow-xl shadow-cyan-400">
                     <img className="w-full" src={img} alt={itemName} />
                 </div>
-                <div className="">
+                <div className="my-7 md:my-0">
                     <h2 className="mb-3 text-3xl font-semibold">{itemName}</h2>
                     <p className="mb-3"><span className="font-bold">Product Id:</span> {_id}</p>
                     <p className="mb-3"><span className="font-bold">Categories:</span> {categories}</p>
@@ -126,6 +127,9 @@ const ProductDetails = () => {
                         </ul>
                     </div>
             }
+            <div className="text-center my-6">
+                <button onClick={() => navigate("/manage-products")} className="mb-5 bg-cyan-800 font-semibold text-slate-50 hover:bg-cyan-950 px-6 py-3 rounded-md">Manage All Inventories</button>
+            </div>
         </div>
     );
 };

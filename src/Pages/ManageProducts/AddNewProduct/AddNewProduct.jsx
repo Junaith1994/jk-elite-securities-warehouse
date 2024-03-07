@@ -1,5 +1,7 @@
+import axios from "axios";
 import { useRef } from "react";
 import { NavLink } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const AddNewProduct = () => {
     // Input Field Value
@@ -26,19 +28,37 @@ const AddNewProduct = () => {
         const price = priceRef.current.value;
         const quantity = quantityRef.current.value;
         const createdBy = createdByRef.current.value;
-        const date = new Date() || dateRef.current.value; 
-        console.log({
-            "productName": productName,
-            "imgLink": imgLink,
+        const date = dateRef.current.value || new Date();
+
+        const productInfo = {
+            "itemName": productName,
+            "img": imgLink,
             "categories": categories,
             "shortDescription": shortDescription,
             "description": description,
             "supplier": supplier,
-            "price": price,
+            "price": `$${price}`,
             "quantity": quantity,
             "createdBy": createdBy,
             "date": date,
-        });
+        };
+        // Sending product info to the server
+        axios.post('http://localhost:5000/product/add-product', { productInfo: productInfo })
+            .then(res => { console.log(res); toast.success(`Product ${productName} Added Successfully !`); })
+            .then(error => { console.log(error); toast.error("Something Went Wrong !!") })
+
+        /* console.log({
+            "itemName": productName,
+            "img": imgLink,
+            "categories": categories,
+            "shortDescription": shortDescription,
+            "description": description,
+            "supplier": supplier,
+            "price": `$${price}`,
+            "quantity": quantity,
+            "createdBy": createdBy,
+            "date": date,
+        }); */
         // event.target.reset();
     }
 
@@ -84,6 +104,7 @@ const AddNewProduct = () => {
                                 ref={imgLinkRef}
                                 type="text"
                                 autoComplete="img-Link"
+                                placeholder="Enter a valid image link"
                                 required
                                 className="block w-full px-2 rounded-md border-0 py-1.5 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-950 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm lg:text-xl sm:leading-6"
                             />
