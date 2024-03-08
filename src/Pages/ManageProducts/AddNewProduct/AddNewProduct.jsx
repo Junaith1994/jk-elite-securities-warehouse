@@ -2,9 +2,10 @@ import axios from "axios";
 import { useRef } from "react";
 import { NavLink } from "react-router-dom";
 import { toast } from "react-toastify";
+import useAuthState from "../../../hooks/useFirebaseAuth/useAuthState";
 
 const AddNewProduct = () => {
-    // Input Field Value
+    // All Input Fields Ref
     const productNameRef = useRef('');
     const imgLinkRef = useRef('');
     const categoriesRef = useRef('');
@@ -15,10 +16,14 @@ const AddNewProduct = () => {
     const quantityRef = useRef('');
     const createdByRef = useRef('');
     const dateRef = useRef('');
-    // .current.value;
+    // User state from custom firebase hook
+    const [user] = useAuthState();
+
+    // Handle form submit
     const handleFormSubmit = event => {
         // Preventing Default Submit
         event.preventDefault();
+        // All Input fileds value
         const productName = productNameRef.current.value;
         const imgLink = imgLinkRef.current.value;
         const categories = categoriesRef.current.value;
@@ -29,6 +34,10 @@ const AddNewProduct = () => {
         const quantity = quantityRef.current.value;
         const createdBy = createdByRef.current.value;
         const date = dateRef.current.value || new Date();
+        // Validating imgLink
+        const imgLinkValidate = /^(http|https)/;
+        const checkImgLinkValidation = imgLinkValidate.test(imgLink);
+        // console.log(checkImgLinkValidation);
 
         const productInfo = {
             "itemName": productName,
@@ -42,11 +51,13 @@ const AddNewProduct = () => {
             "createdBy": createdBy,
             "date": date,
         };
-        // Sending product info to the server
-        axios.post('http://localhost:5000/product/add-product', { productInfo: productInfo })
-            .then(res => { console.log(res); toast.success(`Product ${productName} Added Successfully !`); })
-            .then(error => { console.log(error); toast.error("Something Went Wrong !!") })
 
+        // Sending product info to the server if imgLink is valid
+        checkImgLinkValidation ? axios.post('http://localhost:5000/product/add-product', { productInfo: productInfo })
+            .then(res => { console.log(res); toast.success(`Product ${productName} Added Successfully !`); })
+            .catch(error => { console.log(error); toast.error("Something Went Wrong !!") })
+            :
+            toast.error(`' ${imgLink} ' is Invalid link. Provide a valid image link.`);
         /* console.log({
             "itemName": productName,
             "img": imgLink,
@@ -138,7 +149,7 @@ const AddNewProduct = () => {
                                 type="text"
                                 autoComplete="shortDescription"
                                 required
-                                className="block w-full px-2 rounded-md border-0 py-1.5 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-950 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm lg:text-xl sm:leading-6"
+                                className="block w-full h-24 md:h-36 px-2 rounded-md border-0 py-1.5 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-950 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm lg:text-xl sm:leading-6"
                             />
                         </div>
                     </div>
@@ -154,7 +165,7 @@ const AddNewProduct = () => {
                                 type="text"
                                 autoComplete="description"
                                 required
-                                className="block w-full px-2 rounded-md border-0 py-1.5 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-950 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm lg:text-xl sm:leading-6"
+                                className="block w-full h-40 md:h-52 px-2 rounded-md border-0 py-1.5 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-950 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm lg:text-xl sm:leading-6"
                             />
                         </div>
                     </div>
@@ -216,6 +227,8 @@ const AddNewProduct = () => {
                                 name="createdBy"
                                 ref={createdByRef}
                                 type="email"
+                                defaultValue={user?.email}
+                                readOnly
                                 autoComplete="createdBy"
                                 placeholder="Your Email"
                                 required
@@ -253,6 +266,15 @@ const AddNewProduct = () => {
                         See All Products
                     </NavLink>
                 </p>
+            </div>
+            <div className="m-6 text-slate-200">
+                <h4 className="text-xl font-semibold text-yellow-400">Basic Instructions :</h4>
+                <ul>
+                    <li>Add product image link from here : </li>
+                    <li>Restock input value must be a positive value.</li>
+                    <li>You cannot restock more than 3000 item at a time.</li>
+                    <li>To add more than 1000 item at a time you will be asked for confirmation.</li>
+                </ul>
             </div>
         </div>
     );

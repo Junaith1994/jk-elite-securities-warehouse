@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import { useEffect, useState } from "react";
 
 const ManageProducts = () => {
+    // Remaining products State after deletion
     const [remainingItems, setRemainingItems] = useState([]);
     // Getting All Prducts data using custom hook
     const [products] = useProducts();

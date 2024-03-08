@@ -9,10 +9,10 @@ import { signOut } from 'firebase/auth';
 import { auth } from '../../firebase.init';
 
 const navigation = [
-    { name: 'Products', to: '/manage-products' },
+    // { name: 'Manage Products', to: '/manage-products' },
     { name: 'Features', to: '/' },
-    { name: 'Marketplace', to: '/' },
-    { name: 'Company', to: '/' },
+    // { name: 'Manage Products', to: '/manage-products' },
+    // { name: 'My Items', to: '/my-items' },
 ]
 
 const Header = () => {
@@ -20,6 +20,11 @@ const Header = () => {
     // Firebase AuthState custom hook to get the currently signed in user
     const [user, loading] = useAuthState();
     console.log(user);
+    if (loading) {
+        return <div className=''>
+            <svg className='bg-blue-800 text-center animate-ping h-10 w-10 mx-auto rounded-full' viewBox="0 0 24 24"></svg>
+        </div>
+    }
 
     return (
         <header className="bg-black">
@@ -51,6 +56,14 @@ const Header = () => {
                             {item.name}
                         </NavLink>
                     ))}
+                    {user && <NavLink to='/manage-products' className="text-sm font-semibold leading-6 text-white">
+                        Manage Products
+                    </NavLink>}
+                    {
+                        user && <NavLink to='/my-items' className="text-sm font-semibold leading-6 text-white">
+                            My Items
+                        </NavLink>
+                    }
                 </div>
                 {
                     user || loading ? <div className="hidden lg:flex lg:flex-1 lg:justify-end">
