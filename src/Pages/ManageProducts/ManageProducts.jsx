@@ -1,37 +1,10 @@
 import { useNavigate } from "react-router-dom";
-import useProducts from "../../hooks/useProducts";
 import ProductData from "./ProductData/ProductData";
-import axios from "axios";
-import { toast } from "react-toastify";
-import { useEffect, useState } from "react";
+import useDeleteProduct from "../../hooks/useDeleteProduct";
 
 const ManageProducts = () => {
-    // Remaining products State after deletion
-    const [remainingItems, setRemainingItems] = useState([]);
-    // Getting All Prducts data using custom hook
-    const [products] = useProducts();
     const navigate = useNavigate();
-    useEffect(() => {
-        setRemainingItems(products);
-    }, [products])
-
-    // Handle Delete Button 
-    const handleDelete = (id, itemName) => {
-        const deleteConfirmation = window.confirm(`Do you want to delete ${itemName} parmanently ?`);
-
-        deleteConfirmation && axios.delete(`http://localhost:5000/product/delete/${id}`)
-            .then(res => {
-                console.log(res);
-                let newProducts = [];
-                if (res.data.deletedCount === 1) {
-                    toast.success(`Successfully Deleted ${itemName}`)
-                    const remainingProducts = products.filter(item => item._id !== id);
-                    newProducts = [...remainingProducts];
-                    setRemainingItems(newProducts);
-                }
-            })
-            .then(error => { console.log(error); })
-    }
+    const [handleDelete, remainingItems] = useDeleteProduct();
 
     return (
         <div className="min-w-full bg-slate-950 text-slate-100">

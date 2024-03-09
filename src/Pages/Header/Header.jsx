@@ -10,8 +10,9 @@ import { auth } from '../../firebase.init';
 
 const navigation = [
     // { name: 'Manage Products', to: '/manage-products' },
-    { name: 'Features', to: '/' },
-    // { name: 'Manage Products', to: '/manage-products' },
+    { name: 'Home', to: '/' },
+    { name: 'Blogs', to: '/' },
+    { name: 'About Us', to: '/' },
     // { name: 'My Items', to: '/my-items' },
 ]
 
@@ -58,6 +59,9 @@ const Header = () => {
                     ))}
                     {user && <NavLink to='/manage-products' className="text-sm font-semibold leading-6 text-white">
                         Manage Products
+                    </NavLink>}
+                    {user && <NavLink to='/add-new-product' className="text-sm font-semibold leading-6 text-white">
+                        Add Products
                     </NavLink>}
                     {
                         user && <NavLink to='/my-items' className="text-sm font-semibold leading-6 text-white">
@@ -112,6 +116,17 @@ const Header = () => {
                                         {item.name}
                                     </NavLink>
                                 ))}
+                                {user && <NavLink to='/manage-products' className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-slate-100 hover:bg-gray-50 hover:text-gray-950">
+                                    Manage Products
+                                </NavLink>}
+                                {user && <NavLink to='/add-new-product' className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-slate-100 hover:bg-gray-50 hover:text-gray-950">
+                                    Add Products
+                                </NavLink>}
+                                {
+                                    user && <NavLink to='/my-items' className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-slate-100 hover:bg-gray-50 hover:text-gray-950">
+                                        My Items
+                                    </NavLink>
+                                }
                             </div>
                             {
                                 user || loading ? <div className="py-6">

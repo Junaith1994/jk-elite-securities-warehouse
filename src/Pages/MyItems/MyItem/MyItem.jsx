@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-const MyItem = ({product}) => {
+const MyItem = ({ product, handleDelete }) => {
     const { _id, itemName, img, shortDescription, supplier, price, quantity } = product;
     const navigate = useNavigate();
 
@@ -16,8 +16,11 @@ const MyItem = ({product}) => {
                 <p className="font-bold">Price: {price}</p>
                 <p className="font-bold">Quantity: {quantity}</p>
             </div>
-            <div onClick={() => navigate(`/product/${_id}`)} className="text-center px-0 py-0 md:px-2 md:py-2 text-slate-200 font-semibold btn-grad">
+            <div onClick={() => navigate(`/product/${_id}`)} className="px-0 py-0 md:px-2 md:py-2 text-slate-200 font-semibold btn-grad">
                 <button className="px-4 py-4 rounded-lg w-100">Manage Product</button>
+            </div>
+            <div onClick={() => handleDelete(_id, itemName)} className="text-center text-slate-200 font-semibold hover:bg-red-600 bg-red-800 rounded-lg">
+                <button className="w-full py-4">Delete Product</button>
             </div>
         </div>
     );
