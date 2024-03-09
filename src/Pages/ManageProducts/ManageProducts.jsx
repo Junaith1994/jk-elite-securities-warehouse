@@ -16,6 +16,7 @@ const ManageProducts = () => {
                         <th className="border border-slate-600">Categories</th>
                         <th className="border border-slate-600">Quantity</th>
                         <th className="border border-slate-600">Price</th>
+                        <th className="border border-slate-600">Added On</th>
                         <th className="border border-slate-600">Supplier</th>
                         <th className="border border-slate-600">Delete</th>
                     </tr>

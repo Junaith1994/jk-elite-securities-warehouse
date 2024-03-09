@@ -88,7 +88,7 @@ const AddNewProduct = () => {
 
             <div className="md:mx-auto shadow-2xl backdrop-blur-xl rounded-md bg-slate-950 shadow-cyan-500">
                 <form onSubmit={handleFormSubmit} className="grid md:grid-cols-3 gap-6" action="#" method="POST">
-                    <div className="col-span-3 md:col-span-1">
+                    <div className="col-span-3">
                         {/* Name, ImgLink, categories */}
                         <div>
                             <label htmlFor="email" className="block text-sm font-medium leading-6 text-slate-100">
