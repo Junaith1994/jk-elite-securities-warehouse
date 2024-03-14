@@ -15,7 +15,6 @@ const AddNewProduct = () => {
     const priceRef = useRef('');
     const quantityRef = useRef('');
     const createdByRef = useRef('');
-    const dateRef = useRef('');
     // User state from custom firebase hook
     const [user] = useAuthState();
 
@@ -33,7 +32,6 @@ const AddNewProduct = () => {
         const price = priceRef.current.value;
         const quantity = quantityRef.current.value;
         const createdBy = createdByRef.current.value;
-        const date = dateRef.current.value || new Date();
         // Validating imgLink
         const imgLinkValidate = /^(http|https)/;
         const checkImgLinkValidation = imgLinkValidate.test(imgLink);
@@ -49,8 +47,8 @@ const AddNewProduct = () => {
             "price": `$${price}`,
             "quantity": quantity,
             "createdBy": createdBy,
-            "date": date,
         };
+        // console.log(productInfo);
 
         // Sending product info to the server if imgLink is valid
         checkImgLinkValidation ? axios.post('http://localhost:5000/product/add-product', { productInfo: productInfo })
@@ -58,6 +56,7 @@ const AddNewProduct = () => {
             .catch(error => { console.log(error); toast.error("Something Went Wrong !!") })
             :
             toast.error(`' ${imgLink} ' is Invalid link. Provide a valid image link.`);
+
         /* console.log({
             "itemName": productName,
             "img": imgLink,
@@ -68,7 +67,6 @@ const AddNewProduct = () => {
             "price": `$${price}`,
             "quantity": quantity,
             "createdBy": createdBy,
-            "date": date,
         }); */
         // event.target.reset();
     }
@@ -115,7 +113,7 @@ const AddNewProduct = () => {
                                     id="imgLink"
                                     name="img-Link"
                                     ref={imgLinkRef}
-                                    type="text"
+                                    type="url"
                                     autoComplete="img-Link"
                                     placeholder="Enter a valid image link"
                                     required
@@ -244,21 +242,6 @@ const AddNewProduct = () => {
                                 />
                             </div>
                         </div>
-                        <div>
-                            <label htmlFor="email" className="block text-sm font-medium leading-6 text-slate-100">
-                                Date
-                            </label>
-                            <div className="mt-2">
-                                <input
-                                    id="date"
-                                    name="date"
-                                    ref={dateRef}
-                                    type="date"
-                                    autoComplete="date"
-                                    className="block w-full px-2 rounded-md border-0 py-1.5 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-950 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm lg:text-xl sm:leading-6"
-                                />
-                            </div>
-                        </div>
                     </div>
                     <div className='login-btn col-span-3 w-full md:w-1/2 justify-self-center rounded-md'>
                         <button
@@ -269,7 +252,7 @@ const AddNewProduct = () => {
                         </button>
                     </div>
                 </form>
-                
+
                 <p className="mt-10 text-center text-sm md:text-xl text-gray-500">
                     <NavLink to="/manage-products" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
                         See All Products

@@ -7,7 +7,7 @@ const ManageProducts = () => {
     const [handleDelete, remainingItems] = useDeleteProduct();
 
     return (
-        <div className="min-w-full bg-slate-950 text-slate-100">
+        <div className="min-w-full overflow-x-auto md:overflow-x-hidden bg-slate-950 text-slate-100">
             <h1 className="text-4xl font-semibold text-center mb-8">Manage All Security Products</h1>
             <table className="w-full border-collapse border border-slate-500">
                 <thead className="row">
