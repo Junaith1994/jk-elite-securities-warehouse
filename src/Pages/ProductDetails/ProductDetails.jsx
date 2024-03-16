@@ -8,6 +8,7 @@ const ProductDetails = () => {
     const { id } = useParams();
     const restockInputRef = useRef(0);
     const [latestQtyValue, setLatestQtyValue] = useState(undefined);
+    const [delivered, setDelivered] = useState(0);
     const navigate = useNavigate();
 
     // Getting single product data from the server by sending specific product 'id' as parameter using custom hook 
@@ -25,23 +26,29 @@ const ProductDetails = () => {
         price,
         quantity,
         createdBy,
-        date
+        date,
+        delivered: storedDeliveredQty
     } = product;
 
     // Setting immutable quantity value as mutable for mutation (Because 'quantity' value can't be mutable directly. That's why copying the quantity value for mutation which will be updated later in the database as actual value ans also update in UI)
     useEffect(() => {
         setLatestQtyValue(quantity);
-    }, [quantity])
+        setDelivered(storedDeliveredQty);
+    }, [quantity, storedDeliveredQty])
 
     // Handle delivered button
     const handleDelivered = () => {
         if (latestQtyValue > 0) {
             const updatedValue = latestQtyValue - 1;
             setLatestQtyValue(updatedValue);
-            // console.log(latestQtyValue);
+            const newDeliveredValue = delivered + 1;
+            latestQtyValue !== 0 && setDelivered(newDeliveredValue);
+            // console.log('Delivered:', delivered);
+            // console.log('UpdatedQty:', updatedValue);
             axios.post('http://localhost:5000/product/update-qty', {
+                productId: id,
                 updatedValue: updatedValue,
-                productId: id
+                deliveredValue: newDeliveredValue
             })
                 .then(res => {
                     console.log(res.data);
@@ -50,6 +57,25 @@ const ProductDetails = () => {
                     console.log(error);
                 })
         }
+    }
+
+    // Handle Clear Delivered Qty
+    const clearDeliveredQty = () => {
+        const clearConfirmation = window.prompt("Do you want to clear the delivered records?  If Yes Please Enter Password, Or See the Basic Instructions at the bottom of this page?")
+        console.log(clearConfirmation);
+
+        clearConfirmation == 12345 && axios.post('http://localhost:5000/product/clear-delivered', {
+            productId: id
+        })
+            .then(res => {
+                console.log(res.data);
+                location.reload();
+            })
+            .catch(error => {
+                console.log(error);
+                toast.error("Something Went Wrong ! Clearing failed !!");
+            })
+
     }
 
     // Handle Restock button 
@@ -77,7 +103,7 @@ const ProductDetails = () => {
         else {
             toast.error("Restock Value less than 1 is invalid. Enter between 1 - 3000 value.");
         }
-        
+
     }
 
     return (
@@ -95,9 +121,11 @@ const ProductDetails = () => {
                     <p className="mb-3"><span className="font-bold">Supplier:</span> {supplier}</p>
                     <p className="mb-3 font-bold">Price: {price}</p>
                     <p className={quantity < 100 ? 'mb-3 bg-red-700' : 'mb-3'}><span className="font-bold">Quantity:</span> {quantity <= latestQtyValue ? quantity : latestQtyValue}</p>
+                    <p className='mb-3'><span className="font-bold">Delivered:</span> {delivered >= storedDeliveredQty ? delivered : storedDeliveredQty}</p>
                     <p className="mb-3"><span className="font-bold">Added By:</span> {createdBy}</p>
                     <p className="mb-3"><span className="font-bold">Added on:</span> {date}</p>
                     <button onClick={() => handleDelivered()} className="my-5 bg-cyan-700 hover:bg-cyan-900 px-5 py-2 rounded-md text-slate-50 font-semibold">Delivered</button>
+                    <button onClick={() => clearDeliveredQty()} className="my-5 ms-10 bg-cyan-700 hover:bg-cyan-900 px-5 py-2 rounded-md text-slate-50 font-semibold">Clear Delivered Qty</button>
                     <div className="text-center">
                         <h2 className="font-bold text-2xl mb-3">Restock the Product</h2>
                         <form onSubmit={handleRestock}>
@@ -112,6 +140,7 @@ const ProductDetails = () => {
                     <h4 className="text-xl font-semibold text-yellow-400">Basic Instructions :</h4>
                     <ul>
                         <li>Quantity data background color in <span className="text-red-800 font-bold">Red</span> indicating low stock.</li>
+                        <li>You must provide the password to Clear the delivered quantity. Password is: 12345 (Temporary)</li>
                         <li>Restock input value must be a positive value.</li>
                         <li>You cannot restock more than 3000 item at a time.</li>
                         <li>To add more than 1000 item at a time you will be asked for confirmation.</li>
@@ -121,6 +150,7 @@ const ProductDetails = () => {
                     <div className="m-6">
                         <h4 className="text-xl font-semibold text-yellow-400">Basic Instructions :</h4>
                         <ul>
+                            <li>You must provide the password to Clear the delivered quantity. Password is: 12345 (Temporary)</li>
                             <li>Restock input value must be a positive value.</li>
                             <li>You cannot restock more than 3000 item at a time.</li>
                             <li>To add more than 1000 item at a time you will be asked for confirmation.</li>

@@ -8,7 +8,7 @@ const Last7DaysProducts = () => {
     useEffect(() => {
         axios.get('http://localhost:5000/recently-added')
             .then(res => {
-                setAddedProducts(res.data);
+                setAddedProducts(res.data.reverse());
             })
             .catch(err => console.log(err))
     }, [])
