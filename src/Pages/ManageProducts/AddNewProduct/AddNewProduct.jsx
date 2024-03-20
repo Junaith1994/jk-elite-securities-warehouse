@@ -51,7 +51,7 @@ const AddNewProduct = () => {
         // console.log(productInfo);
 
         // Sending product info to the server if imgLink is valid
-        checkImgLinkValidation ? axios.post('http://localhost:5000/product/add-product', { productInfo: productInfo })
+        checkImgLinkValidation ? axios.post('https://jk-elite-securities-warehouse-server.vercel.app/product/add-product', { productInfo: productInfo })
             .then(res => { console.log(res); toast.success(`Product ${productName} Added Successfully !`); })
             .catch(error => { console.log(error); toast.error("Something Went Wrong !!") })
             :

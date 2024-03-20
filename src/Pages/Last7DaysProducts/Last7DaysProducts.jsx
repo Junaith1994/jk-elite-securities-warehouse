@@ -6,7 +6,7 @@ const Last7DaysProducts = () => {
     const [addedProducts, setAddedProducts] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/recently-added')
+        axios.get('https://jk-elite-securities-warehouse-server.vercel.app/recently-added')
             .then(res => {
                 setAddedProducts(res.data.reverse());
             })

@@ -15,7 +15,7 @@ const MyItems = () => {
 
     // Sending request to the server to get the user added items
     useEffect(() => {
-        user && axios.get(`http://localhost:5000/my-items/${user?.email}`)
+        user && axios.get(`https://jk-elite-securities-warehouse-server.vercel.app/my-items/${user?.email}`)
             .then(res => {
                 console.log(res.data);
                 setMyProducts(res.data);
@@ -27,7 +27,7 @@ const MyItems = () => {
     const handleDelete = (id, itemName) => {
         const deleteConfirmation = window.confirm(`Do you want to delete ${itemName} parmanently ?`);
 
-        deleteConfirmation && axios.delete(`http://localhost:5000/product/delete/${id}`)
+        deleteConfirmation && axios.delete(`https://jk-elite-securities-warehouse-server.vercel.app/product/delete/${id}`)
             .then(res => {
                 console.log(res);
                 let newProducts = [];

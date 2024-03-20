@@ -45,7 +45,7 @@ const ProductDetails = () => {
             latestQtyValue !== 0 && setDelivered(newDeliveredValue);
             // console.log('Delivered:', delivered);
             // console.log('UpdatedQty:', updatedValue);
-            axios.post('http://localhost:5000/product/update-qty', {
+            axios.post('https://jk-elite-securities-warehouse-server.vercel.app/product/update-qty', {
                 productId: id,
                 updatedValue: updatedValue,
                 deliveredValue: newDeliveredValue
@@ -64,7 +64,7 @@ const ProductDetails = () => {
         const clearConfirmation = window.prompt("Do you want to clear the delivered records?  If Yes Please Enter Password, Or See the Basic Instructions at the bottom of this page?")
         console.log(clearConfirmation);
 
-        clearConfirmation == 12345 && axios.post('http://localhost:5000/product/clear-delivered', {
+        clearConfirmation == 12345 && axios.post('https://jk-elite-securities-warehouse-server.vercel.app/product/clear-delivered', {
             productId: id
         })
             .then(res => {
@@ -87,13 +87,13 @@ const ProductDetails = () => {
         if (restockValue && restockValue > 0) {
             restockValue > 3000 ? toast.error("Restock value more than 3000 is not allowed")
                 :
-                confirmation ? axios.post('http://localhost:5000/product/update-qty', {
+                confirmation ? axios.post('https://jk-elite-securities-warehouse-server.vercel.app/product/update-qty', {
                     productId: id,
                     updatedValue: restockValue
                 })
                     .then(res => { console.log(res); location.reload(); })
                     .then(error => console.log(error)) :
-                    restockValue <= 1000 && axios.post('http://localhost:5000/product/update-qty', {
+                    restockValue <= 1000 && axios.post('https://jk-elite-securities-warehouse-server.vercel.app/product/update-qty', {
                         productId: id,
                         updatedValue: restockValue
                     })

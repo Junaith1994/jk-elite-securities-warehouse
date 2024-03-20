@@ -6,7 +6,7 @@ const useSingleProductData = (id) => {
 
     // Getting single product details by sending request to the server
     useEffect(() => {
-        axios.get(`http://localhost:5000/product/${id}`)
+        axios.get(`https://jk-elite-securities-warehouse-server.vercel.app/product/${id}`)
             .then(res => {
                 setProduct(res.data);
             })

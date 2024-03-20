@@ -17,7 +17,7 @@ const useDeleteProduct = () => {
     const handleDelete = (id, itemName) => {
         const deleteConfirmation = window.confirm(`Do you want to delete ${itemName} parmanently ?`);
 
-        deleteConfirmation && axios.delete(`http://localhost:5000/product/delete/${id}`)
+        deleteConfirmation && axios.delete(`https://jk-elite-securities-warehouse-server.vercel.app/product/delete/${id}`)
             .then(res => {
                 console.log(res);
                 let newProducts = [];
