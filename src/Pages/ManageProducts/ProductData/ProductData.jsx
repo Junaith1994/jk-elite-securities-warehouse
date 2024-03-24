@@ -1,9 +1,16 @@
 import { useNavigate } from 'react-router-dom';
 import './ProductData.css'
+import moment from 'moment';
 
 const ProductData = ({ productData, handleDelete }) => {
     const { _id, itemName, categories, date, supplier, price, quantity } = productData;
     const navigate = useNavigate();
+
+    // Converting date into user's local time zone
+    const retrievedDateFromDB = moment(date);
+    const localDateAndTime = retrievedDateFromDB.local().format('YYYY-MM-DD HH:mm:ss');
+    // console.log(localDateAndTime);
+
 
     return (
         <tr className="table-data-shad">
@@ -11,7 +18,7 @@ const ProductData = ({ productData, handleDelete }) => {
             <td className="border border-slate-700 shadow-md">{categories}</td>
             <td className={quantity < 100 ? 'bg-red-700 border border-slate-700' : 'border border-slate-700 shadow-md'}>{quantity}</td>
             <td className="border border-slate-700 shadow-md">{price}</td>
-            <td className="border border-slate-700 shadow-md text-sm">{date}</td>
+            <td className="border border-slate-700 shadow-md text-sm">{localDateAndTime}</td>
             <td className="border border-slate-700 shadow-md">{supplier}</td>
             <td className="border w-5 md:w-auto border-slate-700 shadow-md cursor-pointer">
                 <svg onClick={() => handleDelete(_id, itemName)} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="red" className="w-9 h-8 md:h-6">

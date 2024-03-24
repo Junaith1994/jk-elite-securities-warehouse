@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import useSingleProductData from "../../hooks/useSingleProductData";
 import axios from "axios";
+import moment from "moment";
 
 const ProductDetails = () => {
     const { id } = useParams();
@@ -29,6 +30,10 @@ const ProductDetails = () => {
         date,
         delivered: storedDeliveredQty
     } = product;
+
+    // Converting date into user's local time zone
+    const retrievedDateFromDB = moment(date);
+    const localDateAndTime = retrievedDateFromDB.local().format('YYYY-MM-DD HH:mm:ss');
 
     // Setting immutable quantity value as mutable for mutation (Because 'quantity' value can't be mutable directly. That's why copying the quantity value for mutation which will be updated later in the database as actual value ans also update in UI)
     useEffect(() => {
@@ -123,7 +128,7 @@ const ProductDetails = () => {
                     <p className={quantity < 100 ? 'mb-3 bg-red-700' : 'mb-3'}><span className="font-bold">Quantity:</span> {quantity <= latestQtyValue ? quantity : latestQtyValue}</p>
                     <p className='mb-3'><span className="font-bold">Delivered:</span> {delivered >= storedDeliveredQty ? delivered : storedDeliveredQty}</p>
                     <p className="mb-3"><span className="font-bold">Added By:</span> {createdBy}</p>
-                    <p className="mb-3"><span className="font-bold">Added on:</span> {date}</p>
+                    <p className="mb-3"><span className="font-bold">Added on:</span> {localDateAndTime}</p>
                     <button onClick={() => handleDelivered()} className="my-5 bg-cyan-700 hover:bg-cyan-900 px-5 py-2 rounded-md text-slate-50 font-semibold">Delivered</button>
                     <button onClick={() => clearDeliveredQty()} className="my-5 ms-10 bg-cyan-700 hover:bg-cyan-900 px-5 py-2 rounded-md text-slate-50 font-semibold">Clear Delivered Qty</button>
                     <div className="text-center">
