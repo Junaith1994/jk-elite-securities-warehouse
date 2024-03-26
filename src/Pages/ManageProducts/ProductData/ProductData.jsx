@@ -8,7 +8,7 @@ const ProductData = ({ productData, handleDelete }) => {
 
     // Converting date into user's local time zone
     const retrievedDateFromDB = moment(date);
-    const localDateAndTime = retrievedDateFromDB.local().format('YYYY-MM-DD HH:mm:ss');
+    const localDateAndTime = retrievedDateFromDB.local().format('YYYY-MM-DD h:mm:ss a');
     // console.log(localDateAndTime);
 
 

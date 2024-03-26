@@ -3,7 +3,6 @@ import { useRef } from "react";
 import { NavLink } from "react-router-dom";
 import { toast } from "react-toastify";
 import useAuthState from "../../../hooks/useFirebaseAuth/useAuthState";
-import moment from "moment";
 
 const AddNewProduct = () => {
     // All Input Fields Ref
@@ -16,11 +15,7 @@ const AddNewProduct = () => {
     const priceRef = useRef('');
     const quantityRef = useRef('');
     const createdByRef = useRef('');
-    const localMoment = moment();
-
-    // Format the date and time in ISO 8601 format (MongoDB's preferred format)
-    const formattedDateString = localMoment.format('YYYY-MM-DDTHH:mm:ss.SSSZ');
-
+    
     // User state from custom firebase hook
     const [user] = useAuthState();
 
@@ -53,7 +48,6 @@ const AddNewProduct = () => {
             "price": `$${price}`,
             "quantity": quantity,
             "createdBy": createdBy,
-            "date": formattedDateString
         };
         // console.log(productInfo);
 

@@ -1,6 +1,7 @@
 import Chart from 'react-google-charts';
 import useProducts from '../../hooks/useProducts';
 import { useEffect, useState } from 'react';
+import moment from 'moment';
 
 const DeliveryQtyChart = () => {
     const [products] = useProducts();
@@ -8,7 +9,6 @@ const DeliveryQtyChart = () => {
     const [deliveredQty, setDeleveredQty] = useState([]);
     const [date, setDate] = useState([]);
     const [stockQty, setStockQty] = useState([]);
-
 
     useEffect(() => {
         const newNames = [];
@@ -21,7 +21,8 @@ const DeliveryQtyChart = () => {
             newNames.push(product.itemName);
             newStockQty.push(parseInt(product.quantity));
             newDeliveryQty.push(product.delivered);
-            newDates.push(product.date.split('T')[0]);
+            // // Converting date into user's local time zone
+            newDates.push(moment(product.date).local().format('YYYY-MM-DD HH:mm:ss').split(' ')[0]);
             setProductNames(newNames);
             setStockQty(newStockQty);
             setDeleveredQty(newDeliveryQty);

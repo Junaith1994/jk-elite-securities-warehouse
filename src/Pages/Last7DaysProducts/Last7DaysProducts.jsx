@@ -4,7 +4,7 @@ import AddedItem from "./AddedItem";
 
 const Last7DaysProducts = () => {
     const [addedProducts, setAddedProducts] = useState([]);
-    // console.log('AddedProducts:', addedProducts);
+    console.log('AddedProducts:', addedProducts);
 
     useEffect(() => {
         axios.get('https://jk-elite-securities-warehouse-server.vercel.app/recently-added')
