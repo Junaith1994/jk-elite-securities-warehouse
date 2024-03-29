@@ -44,16 +44,16 @@ const DeliveryQtyChart = () => {
         ])
     ];
     const options = {
-        title: "Stocked Quantity and Delivery Chart",
-        vAxis: { title: "Stocked Qty" },
-        hAxis: { title: "Delevered Qty" },
+        title: "Stocked And Delivered Quantity Chart",
+        vAxis: { title: "Quantity Value" },
+        hAxis: { title: "Date" },
         seriesType: "bars",
         series: { 5: { type: "line" } },
     };
 
     return (
         <div>
-            <h1>Products Delevery & Quantity Chart</h1>
+            <h1 className='text-center text-fuchsia-950 font-bold my-10 text-4xl'>Stocked Products Quantity Vs Delevered Products Quantity</h1>
             <Chart chartType="ComboChart"
                 width="100%"
                 height="400px"

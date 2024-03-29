@@ -3,24 +3,35 @@ import { useEffect, useState } from "react";
 import useAuthState from "../../hooks/useFirebaseAuth/useAuthState";
 import MyItem from "./MyItem/MyItem";
 import { toast } from "react-toastify";
+import axiosPrivate from "../../hooks/useAxiosPrivate/useAxiosPrivate";
+import { signOut } from "firebase/auth";
+import { auth } from "../../firebase.init";
+import { useNavigate } from "react-router-dom";
 // import useDeleteProduct from "../../hooks/useDeleteProduct";
 
 const MyItems = () => {
     // Firebase Auth state custom hook
     const [user] = useAuthState();
     const [myProducts, setMyProducts] = useState([]);
-    // Delete product custom hook with UI updating function
-    // const [handleDelete] = useDeleteProduct();
-    // console.log(myProducts);
+    const navigate = useNavigate();
 
     // Sending request to the server to get the user added items
     useEffect(() => {
-        user && axios.get(`https://jk-elite-securities-warehouse-server.vercel.app/my-items/${user?.email}`)
+        user && axiosPrivate.get(`https://jk-elite-securities-warehouse-server.vercel.app/my-items/${user?.email}`)
             .then(res => {
                 console.log(res.data);
                 setMyProducts(res.data);
             })
-            .catch(error => console.log(error))
+            .catch(error => {
+                console.log(error)
+                // Showing error meassage to user and navigating to sign-in page
+                error?.response?.status === 401 || 403
+                    &&
+                    toast.error(`${error?.response?.statusText} Access !! Please Sign-in again.` || "Please Sign-in again.")
+                    signOut(auth)
+                    navigate('/login');
+                    localStorage.removeItem('accessToken');
+            })
     }, [user?.email, user])
 
     // Handle Delete Product
