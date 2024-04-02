@@ -2,7 +2,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase.init";
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import axiosPrivate from "../useAxiosPrivate/useAxiosPrivate";
+import axios from "axios";
 
 const useSignIn = () => {
     // Necessary States and hooks
@@ -20,7 +20,7 @@ const useSignIn = () => {
                 const user = userCredential.user;
                 setUser(user);
                 // Sending user email to create and received JWT token
-                user && axiosPrivate.post('https://jk-elite-securities-warehouse-server.vercel.app/createNewUser', { email: email })
+                user && axios.post('https://jk-elite-securities-warehouse-server.vercel.app/createNewUser', { email: email })
                         .then(res => {
                             localStorage.setItem("accessToken", res.data)
                         })
