@@ -2,6 +2,7 @@ import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useState } from "react";
 import { auth } from "../../firebase.init";
 import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const useGoogleSignIn = () => {
     // Necessary States and hooks
@@ -19,6 +20,13 @@ const useGoogleSignIn = () => {
             .then(result => {
                 const user = result.user;
                 setGoogleUser(user);
+                // Issuing JWT token for Google Sign -in
+                user && axios.post('https://jk-elite-securities-warehouse-server.vercel.app/createNewUser', { email: user?.email })
+                    .then(response => {
+                        const token = response.data;
+                        token && localStorage.setItem('accessToken', token);
+                    })
+
                 // Navigating user to the desired page
                 navigate(from, { replace: true });
             })

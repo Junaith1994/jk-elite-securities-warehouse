@@ -16,8 +16,7 @@ const Login = () => {
     const [SignInWithEmailAndPassword, user, error] = useSignIn();
     const [googleSignIn, googleUser] = useGoogleSignIn();
     const [passwordResetEmail] = usePasswordResetEmail();
-    // console.log(user);
-    // console.log(googleUser);
+
     const handleFormSubmit = event => {
         // Preventing Default Submit
         event.preventDefault();

@@ -28,9 +28,9 @@ const MyItems = () => {
                 error?.response?.status === 401 || 403
                     &&
                     toast.error(`${error?.response?.statusText} Access !! Please Sign-in again.` || "Please Sign-in again.")
-                    signOut(auth)
-                    navigate('/login');
-                    localStorage.removeItem('accessToken');
+                signOut(auth);
+                navigate('/login');
+                localStorage.removeItem('accessToken');
             })
     }, [user?.email, user])
 
