@@ -55,15 +55,21 @@ const MyItems = () => {
     return (
         <div className="container mx-auto bg-gray-950 text-slate-200">
             <h1 className="text-4xl text-center my-5 text-teal-400 font-bold">My Items</h1>
-            <div className="grid md:grid-cols-3 grid-cols-1 gap-3">
-                {
-                    myProducts.map(product => <MyItem
-                        key={product._id}
-                        product={product}
-                        handleDelete={handleDelete}
-                    ></MyItem>)
-                }
-            </div>
+            {
+                myProducts.length !== 0
+                ?
+                <div className="grid md:grid-cols-3 grid-cols-1 gap-3">
+                    {
+                        myProducts.map(product => <MyItem
+                            key={product._id}
+                            product={product}
+                            handleDelete={handleDelete}
+                        ></MyItem>)
+                    }
+                </div>
+                :
+                <h3 className="text-4xl text-center text-red-800 font-bold">No Items Added Yet!</h3>
+            }
             {/* <div className="text-center my-5">
                 <button onClick={() => navigate("/manage-products")} className="bg-cyan-800 font-semibold text-slate-50 hover:bg-cyan-950 px-6 py-3 rounded-md">Manage Products</button>
             </div> */}

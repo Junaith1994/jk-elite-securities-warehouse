@@ -11,7 +11,7 @@ import { auth } from '../../firebase.init';
 const navigation = [
     // { name: 'Manage Products', to: '/manage-products' },
     { name: 'Home', to: '/' },
-    { name: 'Blogs', to: '/' },
+    { name: 'Blogs', to: '/blogs' },
     { name: 'About Us', to: '/' },
     // { name: 'My Items', to: '/my-items' },
 ]
@@ -20,7 +20,6 @@ const Header = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     // Firebase AuthState custom hook to get the currently signed in user
     const [user, loading] = useAuthState();
-    console.log(user);
     if (loading) {
         return <div className=''>
             <svg className='bg-blue-800 text-center animate-ping h-10 w-10 mx-auto rounded-full' viewBox="0 0 24 24"></svg>

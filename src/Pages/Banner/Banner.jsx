@@ -1,3 +1,4 @@
+import { TypeAnimation } from 'react-type-animation';
 import './Banner.css'
 
 const Banner = () => {
@@ -27,13 +28,28 @@ const Banner = () => {
                 </div> */}
                 <div className="text-center">
                     <h1 className="text-4xl font-bold tracking-tight text-slate-100 sm:text-6xl">
-                        Data to enrich your online business
+                        <TypeAnimation
+                            sequence={[
+                                // Same substring at the start will only be typed once, initially
+                                'Welcome To Jk Elite Securities',
+                                2000,
+                                'A security product warehouse of Jk Elite Securities.',
+                                1500,
+                                'Only for the authorized officials of Jk Elite Securities',
+                                5000,
+                            ]}
+                            speed={50}
+                            // style={{ fontSize: '2em' }}
+                            repeat={Infinity}
+                        />
                     </h1>
-                    <p className="mt-6 text-lg leading-8 text-gray-300">
-                        Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet
-                        fugiat veniam occaecat fugiat aliqua.
-                    </p>
-                    <div className="mt-10 flex items-center justify-center gap-x-6">
+                    
+                    <div className=''>
+                        <p className="mt-6 text-lg font-semibold leading-8 text-center text-gray-300">
+                            Explore JK Elite Securities Products, where cutting-edge security solutions meet unrivaled expertise, ensuring safety and peace of mind for every need.
+                        </p>
+                    </div>
+                    {/* <div className="mt-10 flex items-center justify-center gap-x-6">
                         <a
                             href="#"
                             className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
@@ -43,7 +59,7 @@ const Banner = () => {
                         <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
                             Learn more <span aria-hidden="true">→</span>
                         </a>
-                    </div>
+                    </div> */}
                 </div>
             </div>
             <div
