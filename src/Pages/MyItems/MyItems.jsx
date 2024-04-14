@@ -55,7 +55,7 @@ const MyItems = () => {
     return (
         <div className="container mx-auto bg-gray-950 text-slate-200">
             <h1 className="text-4xl text-center my-5 text-teal-400 font-bold">My Items</h1>
-            <div className="grid md:grid-cols-3 grid-cols-2 gap-3">
+            <div className="grid md:grid-cols-3 grid-cols-1 gap-3">
                 {
                     myProducts.map(product => <MyItem
                         key={product._id}

@@ -109,6 +109,7 @@ const Header = () => {
                             <div className="space-y-2 py-6">
                                 {navigation.map((item) => (
                                     <NavLink
+                                        onClick={() => setMobileMenuOpen(false)}
                                         key={item.name}
                                         to={item.to}
                                         className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-slate-100 hover:bg-gray-50 hover:text-gray-950"
@@ -116,14 +117,14 @@ const Header = () => {
                                         {item.name}
                                     </NavLink>
                                 ))}
-                                {user && <NavLink to='/manage-products' className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-slate-100 hover:bg-gray-50 hover:text-gray-950">
+                                {user && <NavLink onClick={() => setMobileMenuOpen(false)} to='/manage-products' className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-slate-100 hover:bg-gray-50 hover:text-gray-950">
                                     Manage Products
                                 </NavLink>}
-                                {user && <NavLink to='/add-new-product' className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-slate-100 hover:bg-gray-50 hover:text-gray-950">
+                                {user && <NavLink onClick={() => setMobileMenuOpen(false)} to='/add-new-product' className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-slate-100 hover:bg-gray-50 hover:text-gray-950">
                                     Add Products
                                 </NavLink>}
                                 {
-                                    user && <NavLink to='/my-items' className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-slate-100 hover:bg-gray-50 hover:text-gray-950">
+                                    user && <NavLink onClick={() => setMobileMenuOpen(false)} to='/my-items' className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-slate-100 hover:bg-gray-50 hover:text-gray-950">
                                         My Items
                                     </NavLink>
                                 }
@@ -138,7 +139,7 @@ const Header = () => {
                                     </NavLink>
                                 </div>
                                     :
-                                    <div className="py-6">
+                                    <div onClick={() => setMobileMenuOpen(false)} className="py-6">
                                         <NavLink
                                             to="/login"
                                             className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-slate-100 hover:bg-gray-50 hover:text-gray-950"
