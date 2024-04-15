@@ -118,8 +118,8 @@ const ProductDetails = () => {
                 <div className="w-full md:w-3/4 shadow-xl shadow-cyan-400">
                     <img className="w-full" src={img} alt={itemName} />
                 </div>
-                <div className="my-7 md:my-0">
-                    <h2 className="mb-3 text-3xl font-semibold">{itemName}</h2>
+                <div className="my-7 md:my-0 text-center md:text-left">
+                    <h2 className="mb-3 text-3xl font-semibold indent-1">{itemName}</h2>
                     <p className="mb-3"><span className="font-bold">Product Id:</span> {_id}</p>
                     <p className="mb-3"><span className="font-bold">Categories:</span> {categories}</p>
                     <p className="mb-3"><span className="font-bold">Description:</span> {description}</p>
