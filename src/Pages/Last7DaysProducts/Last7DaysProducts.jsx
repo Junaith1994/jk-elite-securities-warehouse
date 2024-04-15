@@ -16,7 +16,7 @@ const Last7DaysProducts = () => {
 
     return (
         <div className="container mx-auto">
-            <h1 className="text-4xl text-center my-5 text-fuchsia-950 font-bold">Added Products In Last 7 Days</h1>
+            <h1 className="text-4xl text-center my-5 text-teal-500 font-bold">Added Products In Last 7 Days</h1>
             {
                 addedProducts.length !== 0 ? <div className="grid md:grid-cols-3 grid-cols-2 gap-3">
                     {

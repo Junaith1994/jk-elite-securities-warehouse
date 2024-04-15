@@ -122,7 +122,7 @@ const ProductDetails = () => {
                     <h2 className="mb-3 text-3xl font-semibold indent-1">{itemName}</h2>
                     <p className="mb-3"><span className="font-bold">Product Id:</span> {_id}</p>
                     <p className="mb-3"><span className="font-bold">Categories:</span> {categories}</p>
-                    <p className="mb-3"><span className="font-bold">Description:</span> {description}</p>
+                    <p className="mb-3 px-5 md:px-0"><span className="font-bold">Description:</span> {description}</p>
                     <p className="mb-3"><span className="font-bold">Supplier:</span> {supplier}</p>
                     <p className="mb-3 font-bold">Price: {price}</p>
                     <p className={quantity < 100 ? 'mb-3 bg-red-700' : 'mb-3'}><span className="font-bold">Quantity:</span> {quantity <= latestQtyValue ? quantity : latestQtyValue}</p>

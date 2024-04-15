@@ -5,7 +5,7 @@ const Product = ({ product }) => {
     const navigate = useNavigate();
 
     return (
-        <div className="rounded-lg shadow-md shadow-slate-950 bg-blend-multiply hover:shadow-2xl hover:-translate-y-3 duration-300">
+        <div className="rounded-lg shadow-md shadow-cyan-500 bg-blend-multiply hover:shadow-2xl hover:-translate-y-3 duration-300">
             <div>
                 <img className="object-fill h-48 w-full rounded-lg" src={img} alt={img} />
             </div>
