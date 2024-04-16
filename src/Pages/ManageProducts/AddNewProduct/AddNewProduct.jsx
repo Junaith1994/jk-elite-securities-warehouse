@@ -1,6 +1,7 @@
+/* eslint-disable react/no-unescaped-entities */
 import axios from "axios";
 import { useRef } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { toast } from "react-toastify";
 import useAuthState from "../../../hooks/useFirebaseAuth/useAuthState";
 
@@ -253,10 +254,8 @@ const AddNewProduct = () => {
             <div className="m-6 text-slate-200">
                 <h4 className="text-xl font-semibold text-yellow-400">Basic Instructions :</h4>
                 <ul>
-                    <li>Add product image link from here : </li>
-                    <li>Restock input value must be a positive value.</li>
-                    <li>You cannot restock more than 3000 item at a time.</li>
-                    <li>To add more than 1000 item at a time you will be asked for confirmation.</li>
+                    <li>Add product image link from here : <Link className="text-orange-500" to="https://ibb.co/album/yd7h2n" target="_blank">Click here</Link></li>
+                    <li>Then just click on your desired image and then right-click on mouse then select 'Copy image address'. Paste the copied url in the 'Image Link' field</li>
                 </ul>
             </div>
         </div>
