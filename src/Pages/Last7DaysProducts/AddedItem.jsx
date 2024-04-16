@@ -1,4 +1,5 @@
 import moment from "moment";
+import './AddedItem.css';
 
 const AddedItem = ({ item }) => {
     const { itemName, img, shortDescription, supplier, price, quantity, date } = item;
@@ -8,7 +9,7 @@ const AddedItem = ({ item }) => {
     const localDateAndTime = retrievedDateFromDB.local().format('YYYY-MM-DD HH:mm:ss');
 
     return (
-        <div className="rounded-lg shadow-md shadow-slate-950 bg-blend-multiply hover:shadow-2xl hover:-translate-y-3 duration-300">
+        <div className="rounded-lg shadow-lg shadow-slate-300 bg-blend-multiply hover:shadow-2xl hover:-translate-y-3 duration-300 outline outline-2 outline-gray-400 added-item">
             <div>
                 <img className="object-fill h-48 w-full rounded-lg" src={img} alt={img} />
             </div>
