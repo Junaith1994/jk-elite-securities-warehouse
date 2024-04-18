@@ -20,7 +20,7 @@ const MyItems = () => {
         user && axiosPrivate.get(`https://jk-elite-securities-warehouse-server.vercel.app/my-items/${user?.email}`)
             .then(res => {
                 console.log(res.data);
-                setMyProducts(res.data);
+                setMyProducts(res.data.reverse());
             })
             .catch(error => {
                 console.log(error)

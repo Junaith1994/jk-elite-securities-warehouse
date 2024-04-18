@@ -1,8 +1,13 @@
+import moment from "moment";
 import { useNavigate } from "react-router-dom";
 
 const MyItem = ({ product, handleDelete }) => {
-    const { _id, itemName, img, shortDescription, supplier, price, quantity } = product;
+    const { _id, itemName, img, shortDescription, supplier, price, quantity, date } = product;
     const navigate = useNavigate();
+
+    // Converting date into user's local time zone
+    const retrievedDateFromDB = moment(date);
+    const localDateAndTime = retrievedDateFromDB.local().format('YYYY-MM-DD h:mm:ss a');
 
     return (
         <div className="rounded-lg shadow-md shadow-cyan-300 bg-blend-multiply hover:shadow-2xl hover:-translate-y-3 duration-300">
@@ -15,6 +20,7 @@ const MyItem = ({ product, handleDelete }) => {
                 <p><span className="font-bold">Supplier:</span> <span className="">{supplier}</span></p>
                 <p className="font-bold">Price: {price}</p>
                 <p className="font-bold">Quantity: {quantity}</p>
+                <p className="font-bold">Added On: {localDateAndTime}</p>
             </div>
             <div onClick={() => navigate(`/product/${_id}`)} className="px-0 py-0 md:px-2 md:py-2 text-slate-200 font-semibold btn-grad">
                 <button className="px-4 py-4 rounded-lg w-100">Manage Product</button>

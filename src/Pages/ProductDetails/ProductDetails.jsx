@@ -146,8 +146,8 @@ const ProductDetails = () => {
                         <li>Quantity data background color in <span className="text-red-800 font-bold">Red</span> indicating low stock.</li>
                         <li>You must provide the password to Clear the delivered quantity. Password is: 12345 (Temporary)</li>
                         <li>Restock input value must be a positive value.</li>
-                        <li>You cannot restock more than 3000 item at a time.</li>
-                        <li>To add more than 1000 item at a time you will be asked for confirmation.</li>
+                        <li>You cannot re-stock more than 3000 items in total(existing qty + new qty) at a time.</li>
+                        <li>To re-stock more than 1000 items in total(existing qty + new qty) at a time, you will be asked for confirmation.</li>
                     </ul>
                 </div>
                     :
