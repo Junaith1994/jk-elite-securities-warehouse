@@ -86,28 +86,27 @@ const ProductDetails = () => {
     // Handle Restock button 
     const handleRestock = event => {
         event.preventDefault();
+        if (restockInputRef.current.value < 1) {
+            return toast.error("Restock value less than 1 is invalid. Enter between 1 - 3000 value.");
+        }
         const restockValue = parseInt(restockInputRef.current.value) + parseInt(latestQtyValue);
-        const confirmation = restockValue > 1000 && window.confirm(`Are you sure to add ${restockValue} products to the stock?`);
-        // console.log(restockValue);
-        if (restockValue && restockValue > 0) {
-            restockValue > 3000 ? toast.error("Restock value more than 3000 is not allowed")
+        const confirmation = restockValue > 1000 && window.confirm(`Are you sure you want to stock ${restockValue} products?`);
+        
+            restockValue > 3000 ? toast.error("Total Restock value more than 3000 is not allowed")
                 :
                 confirmation ? axios.post('https://jk-elite-securities-warehouse-server.vercel.app/product/update-qty', {
                     productId: id,
                     updatedValue: restockValue
                 })
                     .then(res => { console.log(res); location.reload(); })
-                    .then(error => console.log(error)) :
+                    .then(error => console.log(error))
+                    :
                     restockValue <= 1000 && axios.post('https://jk-elite-securities-warehouse-server.vercel.app/product/update-qty', {
                         productId: id,
                         updatedValue: restockValue
                     })
                         .then(res => { console.log(res); location.reload(); })
                         .then(error => console.log(error))
-        }
-        else {
-            toast.error("Restock Value less than 1 is invalid. Enter between 1 - 3000 value.");
-        }
 
     }
 

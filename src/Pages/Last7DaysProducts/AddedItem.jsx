@@ -6,7 +6,7 @@ const AddedItem = ({ item }) => {
     
     // Converting date into user's local time zone
     const retrievedDateFromDB = moment(date);
-    const localDateAndTime = retrievedDateFromDB.local().format('YYYY-MM-DD HH:mm:ss');
+    const localDateAndTime = retrievedDateFromDB.local().format('YYYY-MM-DD h:mm:ss a');
 
     return (
         <div className="rounded-lg shadow-lg shadow-slate-300 bg-blend-multiply hover:shadow-2xl hover:-translate-y-3 duration-300 outline outline-2 outline-gray-400 added-item">
