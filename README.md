@@ -76,7 +76,7 @@ https://jk-elite-securities-warehouse.web.app/
 - **React**
 - **React Router**
 - **Axios**
-- **`Authentication :`** **Firebase**
+- **`Authentication & Hosting :`** **Firebase**
 - **`Date & Time :`** **moment.js**
 - **`Charts :`** **react-google-charts**
 - **`Animation` :** **react-type-animation**
@@ -89,3 +89,4 @@ https://jk-elite-securities-warehouse.web.app/
 - **`Database` :** **mongoDB**
 - **`Authentication / Authorization` :** **JWT (jsonwebtoken)**
 - **`Date & Time` :** **moment.js**
+- **`Hosting` :** **Vercel**

@@ -33,7 +33,7 @@ const ProductDetails = () => {
 
     // Converting date into user's local time zone
     const retrievedDateFromDB = moment(date);
-    const localDateAndTime = retrievedDateFromDB.local().format('YYYY-MM-DD HH:mm:ss');
+    const localDateAndTime = retrievedDateFromDB.local().format('YYYY-MM-DD h:mm:ss a');
 
     // Setting immutable quantity value as mutable for mutation (Because 'quantity' value can't be mutable directly. That's why copying the quantity value for mutation which will be updated later in the database as actual value ans also update in UI)
     useEffect(() => {
