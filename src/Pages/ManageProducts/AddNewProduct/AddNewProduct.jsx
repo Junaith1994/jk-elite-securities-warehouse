@@ -16,7 +16,7 @@ const AddNewProduct = () => {
     const priceRef = useRef('');
     const quantityRef = useRef('');
     const createdByRef = useRef('');
-    
+
     // User state from custom firebase hook
     const [user] = useAuthState();
 
@@ -51,7 +51,10 @@ const AddNewProduct = () => {
             "createdBy": createdBy,
         };
         // console.log(productInfo);
-
+        // Price & Quantity validating
+        if(price < 1 | quantity < 1) {
+            return toast.error("Price or quantity can't be less than 1");
+        }
         // Sending product info to the server if imgLink is valid
         checkImgLinkValidation ? axios.post('https://jk-elite-securities-warehouse-server.vercel.app/product/add-product', { productInfo: productInfo })
             .then(res => { console.log(res); toast.success(`Product ${productName} Added Successfully !`); })
@@ -59,7 +62,7 @@ const AddNewProduct = () => {
             :
             toast.error(`' ${imgLink} ' is Invalid link. Provide a valid image link.`);
 
-        console.log(productInfo);
+        // console.log(productInfo);
         // event.target.reset();
     }
 
@@ -192,7 +195,7 @@ const AddNewProduct = () => {
                                     id="price"
                                     name="price"
                                     ref={priceRef}
-                                    type="text"
+                                    type="number"
                                     autoComplete="price"
                                     required
                                     className="block w-full px-2 rounded-md border-0 py-1.5 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-950 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm lg:text-xl sm:leading-6"
@@ -208,7 +211,7 @@ const AddNewProduct = () => {
                                     id="quantity"
                                     name="quantity"
                                     ref={quantityRef}
-                                    type="text"
+                                    type="number"
                                     autoComplete="quantity"
                                     required
                                     className="block w-full px-2 rounded-md border-0 py-1.5 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-950 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm lg:text-xl sm:leading-6"

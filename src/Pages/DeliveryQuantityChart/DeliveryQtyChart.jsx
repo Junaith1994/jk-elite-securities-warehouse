@@ -52,7 +52,7 @@ const DeliveryQtyChart = () => {
     };
 
     return (
-        <div className='mb-10'>
+        <div className='mb-10 bg-slate-950'>
             <h1 className='text-center text-teal-500 font-bold my-10 text-4xl'>Stocked Products Quantity Vs Delevered Products Quantity</h1>
             <Chart chartType="ComboChart"
                 width="100%"

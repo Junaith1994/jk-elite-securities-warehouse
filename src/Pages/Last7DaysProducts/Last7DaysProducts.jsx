@@ -18,7 +18,7 @@ const Last7DaysProducts = () => {
         <div className="container mx-auto">
             <h1 className="text-4xl text-center my-5 text-teal-500 font-bold">Added Products In Last 7 Days</h1>
             {
-                addedProducts.length !== 0 ? <div className="grid md:grid-cols-3 grid-cols-2 gap-3">
+                addedProducts.length !== 0 ? <div className="grid md:grid-cols-3 grid-cols-1 gap-3">
                     {
                         addedProducts.map(item => <AddedItem
                             key={item._id}
