@@ -12,7 +12,7 @@ const navigation = [
     // { name: 'Manage Products', to: '/manage-products' },
     { name: 'Home', to: '/' },
     { name: 'Blogs', to: '/blogs' },
-    { name: 'About Us', to: '/' },
+    { name: 'About Us', to: '/about' },
     // { name: 'My Items', to: '/my-items' },
 ]
 

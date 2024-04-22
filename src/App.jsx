@@ -13,17 +13,17 @@ import { ToastContainer } from 'react-toastify'
 import RequireAuth from './RequireAuth/RequireAuth'
 import MyItems from './Pages/MyItems/MyItems'
 import Blogs from './Pages/Blogs/Blogs'
+import About from './Pages/About/About'
 
 function App() {
 
   return (
     <div>
       <Header></Header>
-
-      {/* <Home></Home> */}
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/blogs' element={<Blogs></Blogs>}></Route>
+        <Route path='/about' element={<About></About>}></Route>
         <Route path='/product/:id' element={
           <RequireAuth>
             <ProductDetails></ProductDetails>
