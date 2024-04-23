@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Footer = () => {
     return (
@@ -30,6 +30,7 @@ const Footer = () => {
                         <p><span className="font-semibold mx-3">Cell:</span>+880-1627676315</p>
                     </div>
                 </div>
+                <div className="mt-5">&copy; All Rights Reserved 2024. Developed by <Link className="text-cyan-500 hover:text-cyan-900" to='https://www.facebook.com/daya.eliyeskhan.7/' target="_blank">Junaith Bin Elias Khan</Link></div>
             </div>
         </div>
     );

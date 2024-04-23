@@ -52,14 +52,14 @@ const Blogs = () => {
                 <table className="border-collapse border border-slate-500 text-slate-100 table-auto">
                     <thead>
                         <tr>
-                            <th className="border border-slate-600">Node.js</th>
-                            <th className="border border-slate-600">MongoDB</th>
+                            <th className="border border-slate-600">When Should Use Node.js ?</th>
+                            <th className="border border-slate-600">When Should Use MongoDB ?</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td className="border border-slate-700">Node.js</td>
-                            <td className="border border-slate-700">MongoDB</td>
+                            <td className="p-2 border border-slate-700">First we need to understand how node.js actually works? <br /> Node.js is a javaScript runtime environment which allows javaScript to be run on server side application. It <b>uses event-driven non-blocking I/O calls which supports thousands of connections simultaneously.</b> </td>
+                            <td className="p-2 border border-slate-700">MongoDB</td>
                         </tr>
                     </tbody>
                 </table>

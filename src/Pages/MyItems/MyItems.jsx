@@ -53,7 +53,7 @@ const MyItems = () => {
     }
 
     return (
-        <div className="container mx-auto bg-gray-950 text-slate-200">
+        <div className="container mx-auto text-slate-200 p-5">
             <h1 className="text-4xl text-center my-5 text-teal-400 font-bold">My Items</h1>
             {
                 myProducts.length !== 0
