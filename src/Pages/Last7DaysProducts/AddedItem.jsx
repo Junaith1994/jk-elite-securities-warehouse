@@ -1,5 +1,4 @@
 import moment from "moment";
-import './AddedItem.css';
 
 const AddedItem = ({ item }) => {
     const { itemName, img, shortDescription, supplier, price, quantity, date } = item;

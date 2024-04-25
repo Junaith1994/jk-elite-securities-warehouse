@@ -12,7 +12,6 @@ const useSingleProductData = (id) => {
             })
             .catch(error => {
                 console.log(error);
-                // setError(error.message);
             })
     }, [id])
 

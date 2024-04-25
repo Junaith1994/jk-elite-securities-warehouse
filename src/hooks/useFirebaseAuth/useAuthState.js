@@ -9,7 +9,6 @@ const useAuthState = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        // setLoading(true);
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 setLoading(false);

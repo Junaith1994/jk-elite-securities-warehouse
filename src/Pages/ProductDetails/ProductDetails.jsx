@@ -14,7 +14,6 @@ const ProductDetails = () => {
 
     // Getting single product data from the server by sending specific product 'id' as parameter using custom hook 
     const [product] = useSingleProductData(id);
-    // const [error, setError] = useState('');
 
     // Destructured info of the single product
     const {
@@ -67,7 +66,6 @@ const ProductDetails = () => {
     // Handle Clear Delivered Qty
     const clearDeliveredQty = () => {
         const clearConfirmation = window.prompt("Do you want to clear the delivered records?  If Yes Please Enter Password, Or See the Basic Instructions at the bottom of this page?")
-        console.log(clearConfirmation);
 
         clearConfirmation == 12345 && axios.post('https://jk-elite-securities-warehouse-server.vercel.app/product/clear-delivered', {
             productId: id
@@ -107,7 +105,6 @@ const ProductDetails = () => {
                     })
                         .then(res => { console.log(res); location.reload(); })
                         .then(error => console.log(error))
-
     }
 
     return (

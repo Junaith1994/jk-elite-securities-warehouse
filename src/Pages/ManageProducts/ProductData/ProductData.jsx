@@ -9,9 +9,7 @@ const ProductData = ({ productData, handleDelete }) => {
     // Converting date into user's local time zone
     const retrievedDateFromDB = moment(date);
     const localDateAndTime = retrievedDateFromDB.local().format('YYYY-MM-DD h:mm:ss a');
-    // console.log(localDateAndTime);
-
-
+    
     return (
         <tr className="table-data-shad">
             <td onClick={() => navigate(`/product/${_id}`)} className="cursor-pointer border border-slate-700" title={`Click here to see the details of ${itemName}`}>{itemName}</td>

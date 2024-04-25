@@ -34,10 +34,10 @@ const AddNewProduct = () => {
         const price = priceRef.current.value;
         const quantity = quantityRef.current.value;
         const createdBy = createdByRef.current.value;
+        
         // Validating imgLink
         const imgLinkValidate = /^(http|https)/;
         const checkImgLinkValidation = imgLinkValidate.test(imgLink);
-        // console.log(checkImgLinkValidation);
 
         const productInfo = {
             "itemName": productName,
@@ -50,7 +50,7 @@ const AddNewProduct = () => {
             "quantity": quantity,
             "createdBy": createdBy,
         };
-        // console.log(productInfo);
+        
         // Price & Quantity validating
         if(price < 1 | quantity < 1) {
             return toast.error("Price or quantity can't be less than 1");
@@ -61,9 +61,6 @@ const AddNewProduct = () => {
             .catch(error => { console.log(error); toast.error("Something Went Wrong !!") })
             :
             toast.error(`' ${imgLink} ' is Invalid link. Provide a valid image link.`);
-
-        // console.log(productInfo);
-        // event.target.reset();
     }
 
     return (
@@ -187,7 +184,7 @@ const AddNewProduct = () => {
                             </div>
                         </div>
                         <div>
-                            <label htmlFor="email" className="block text-sm font-medium leading-6 text-slate-100">
+                            <label htmlFor="price" className="block text-sm font-medium leading-6 text-slate-100">
                                 Price
                             </label>
                             <div className="mt-2">

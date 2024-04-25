@@ -11,7 +11,6 @@ const useGoogleSignIn = () => {
     const navigate = useNavigate();
     let location = useLocation();
     let from = location.state?.from?.pathname || "/";
-    // console.log(googleError);
 
     const googleSignIn = () => {
         // Google Auth Provider
@@ -20,7 +19,7 @@ const useGoogleSignIn = () => {
             .then(result => {
                 const user = result.user;
                 setGoogleUser(user);
-                // Issuing JWT token for Google Sign -in
+                // Issuing JWT token for Google Sign-in
                 user && axios.post('https://jk-elite-securities-warehouse-server.vercel.app/createNewUser', { email: user?.email })
                     .then(response => {
                         const token = response.data;

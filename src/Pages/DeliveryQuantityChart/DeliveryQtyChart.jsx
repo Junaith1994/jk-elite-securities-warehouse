@@ -31,10 +31,6 @@ const DeliveryQtyChart = () => {
 
     }, [products])
 
-    // console.log('Product Name:', productNames.length, 'Stock-Qty:', stockQty.length, 'Date:', date.length);
-    // console.log('Product Name:', productNames, 'Stock-Qty:', stockQty, 'Date:', date);
-    // console.log(date);
-
     const data = [
         ['Date', 'StockedQty', 'DeleveredQty'],
         ...productNames.map((productName, index) => [

@@ -11,7 +11,7 @@ const SignUp = () => {
 
     // firebase custom hook for user Sign-up
     const [SignUpWithEmailAndPass, user, wrongPass, error] = useSignUp();
-    console.log(user);
+    
     // Handle form submit
     const handleFormSubmit = event => {
         // Preventing Default Submit
@@ -20,15 +20,9 @@ const SignUp = () => {
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
         const confirmPass = confirmPassRef.current.value;
-        // console.log('Email:', email, 'Password:', password, 'Confirm-Password:', confirmPass);
 
         // Sign-Up With Email and Password
         SignUpWithEmailAndPass(email, password, confirmPass);
-        
-        // .then(user => {
-        //     console.log(user);
-        // })
-
         event.target.reset();
     }
 

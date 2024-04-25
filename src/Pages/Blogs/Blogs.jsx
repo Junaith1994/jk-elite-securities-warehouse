@@ -2,7 +2,7 @@
 
 const Blogs = () => {
     return (
-        <div className="bg-slate-950 p-5">
+        <div className="p-5">
             <h1 className="text-center text-teal-500 font-bold my-10 text-4xl">Blog</h1>
             <div className="my-5">
                 <h3 className="text-slate-100 text-2xl font-semibold mb-5">Q1: Differences between JavaScript and Node.js</h3>

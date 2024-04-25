@@ -4,7 +4,6 @@ import AddedItem from "./AddedItem";
 
 const Last7DaysProducts = () => {
     const [addedProducts, setAddedProducts] = useState([]);
-    console.log('AddedProducts:', addedProducts);
 
     useEffect(() => {
         axios.get('https://jk-elite-securities-warehouse-server.vercel.app/recently-added')
@@ -31,9 +30,6 @@ const Last7DaysProducts = () => {
                         <h2 className="text-3xl text-center text-red-600 font-semibold">No products added in last 7 days</h2>
                     </div>
             }
-            {/* <div className="text-center my-5">
-                <button onClick={() => navigate("/manage-products")} className="bg-cyan-800 font-semibold text-slate-50 hover:bg-cyan-950 px-6 py-3 rounded-md">Manage Products</button>
-            </div> */}
         </div>
     );
 };
