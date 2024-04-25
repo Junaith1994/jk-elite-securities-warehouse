@@ -12,14 +12,14 @@ const Footer = () => {
                     <div className="space-y-4">
                         <h2 className="text-lg font-semibold">Company</h2>
                         <NavLink to='/' className="block hover:text-gray-400">Home</NavLink>
-                        <NavLink to='' className="block hover:text-gray-400">About Us</NavLink>
-                        <NavLink to='' className="block hover:text-gray-400">Blogs</NavLink>
+                        <NavLink to='/about' className="block hover:text-gray-400">About Us</NavLink>
+                        <NavLink to='/blogs' className="block hover:text-gray-400">Blogs</NavLink>
                     </div>
 
                     {/* Column 2 */}
                     <div className="space-y-4">
                         <h2 className="text-lg font-semibold">Resources</h2>
-                        <NavLink href='#inventories' className="block hover:text-gray-400">Products</NavLink>
+                        <NavLink to='/manage-products' className="block hover:text-gray-400">Products</NavLink>
                         <NavLink to='https://log.logcluster.org/warehouse-safety-and-security' target="_blank" className="block hover:text-gray-400">Warehouse safety and security</NavLink>
                         <NavLink to='https://www.sourcesecurity.com/tags/healthcare-security.html?ref=navbox' target="_blank" className="block hover:text-gray-400">Health care security products</NavLink>
                         <NavLink to='https://www.sourcesecurity.com/companies/security-manufacturers/directory.html?ref=nav' target="_blank" className="block hover:text-gray-400">Manufacturers</NavLink>
