@@ -13,8 +13,6 @@ https://jk-elite-securities-warehouse.web.app/
 
 - User can see the details of any specific product by clicking on that product name and can update their stocked quantity data and delivered data, also a user can see the **low stock product in red background**.
 
-- `Authentication system` : Email-password sign-up/sign-in is available Or user can sign-in with Google. Sign-in is **required** before doing all the operations(Add product, manage product etc).
-
 - Implemented `JWT(jsonwebtoken)` in email-password sign-in and google sign-in for authorization.
 
 - First 6 inventory items is displayed in home page `Items Inventory` section. There is a `Manage Products` button that will navigate user to `Manage All Security Products` page. All the inventory items is there in table form.
@@ -24,6 +22,13 @@ https://jk-elite-securities-warehouse.web.app/
 - In `Home` page user can see all the products that has been added **in last seven days**.
 
 - In `Home` page a `Bar-chart` is provided where user can see all inventory items **stocked qty vs delivered qty data with product creation date**.
+
+### Authentication System
+- Used `Firebase` authentication system. Email-password `sign-up/sign-in` is available Or user can sign-in with `Google`. Sign-in is **required** before doing all the operations(Add product, manage product etc).
+
+-  `Email-Verification Feature :` User will get a **verification** email after successfull sign-up. It will be notified to user by toast notification. 
+
+- `Password Reset Feature :` On sign-in page, If a user forget his password then he can **reset** his password by clicking on `Forgot password?` link. It will also be notified to user by toast notification.
 
 ### Product Adding Feature
 - In form, a user must provide a valid image link in `Image Link` field, a valid `price` and `quantity` value greater than 0 otherwise the user will get an error toast notification Or field error message and the form will not be submited.
